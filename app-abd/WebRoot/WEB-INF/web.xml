@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+ <display-name>Archetype Created Web Application</display-name>
+	<!-- 配置log4j -->
+	<!-- 设置根目录 -->
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>webapp.root</param-value>
+	</context-param>
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:conf/log4j.properties</param-value>
+	</context-param>
+	<!-- 定义LOG4J监听器 --> 
+<listener> 
+   <listener-class> 
+	org.springframework.web.util.Log4jConfigListener 
+   </listener-class> 
+</listener> 
+	<!-- 3000表示 开一条watchdog线程每60秒扫描一下配置文件的变化;这样便于日志存放位置的改变 -->
+	<context-param>
+		<param-name>log4jRefreshInterval</param-name>
+		<param-value>3000</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	<!-- Spring和mybatis的配置文件 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:conf/spring-mybatis.xml</param-value>
+	</context-param>
+	
+
+	
+	<!-- 编码过滤器 -->
+	 <filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/</url-pattern>
+	</filter-mapping> 
+	
+	
+	<!-- 跨域配置-->    
+	<filter>
+        <!-- The CORS filter with parameters -->
+        <filter-name>CORS</filter-name>
+        <filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
+        
+        <!-- Note: All parameters are options, if omitted the CORS 
+             Filter will fall back to the respective default values.
+          -->
+        <init-param>
+            <param-name>cors.allowGenericHttpRequests</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        
+        <init-param>
+            <param-name>cors.allowOrigin</param-name>
+            <param-value>*</param-value>
+        </init-param>
+        
+        <init-param>
+            <param-name>cors.allowSubdomains</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        
+        <init-param>
+            <param-name>cors.supportedMethods</param-name>
+            <param-value>GET, HEAD, POST, OPTIONS</param-value>
+        </init-param>
+        
+        <init-param>
+            <param-name>cors.supportedHeaders</param-name>
+            <param-value>Accept, Origin, X-Requested-With, Content-Type, Last-Modified</param-value>
+        </init-param>
+        
+        <init-param>
+            <param-name>cors.exposedHeaders</param-name>
+            <!--这里可以添加一些自己的暴露Headers   -->
+            <param-value>X-Test-1, X-Test-2</param-value>
+        </init-param>
+        
+        <init-param>
+            <param-name>cors.supportsCredentials</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        
+        <init-param>
+            <param-name>cors.maxAge</param-name>
+            <param-value>3600</param-value>
+        </init-param>
+
+    </filter>
+
+    <filter-mapping>
+        <!-- CORS Filter mapping -->
+        <filter-name>CORS</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+	
+ 	 <!-- <filter>
+		<filter-name>SessionFilter</filter-name>
+		<filter-class>com.asiainfo.abdinfo.filter.SessionFilter</filter-class>
+		<init-param>
+			<description>将当前登录的用户的信息保存在 session 中时使用的key，如果没有配置此参数，则该过滤器不起作用</description>
+			<param-name>sessionKey</param-name>
+			<param-value>staffCode</param-value>
+		</init-param>
+		<init-param>
+			<param-name>redirectUrl</param-name>
+			<param-value>/loginUI.do</param-value>
+		</init-param>
+		<init-param>
+			<description>
+				不需要进行拦截的 url 的正则表达式，即：如果当前请求的 url 的 servletPath 能匹配该正则表达式，则直接放行（即使未登录系统）。
+				此参数的值一般为 loginServlet 和 registServlet 等。
+				另外，参数 redirectUrl 的值不用包含在该正则表达式中，因为 redirectUrl 对应的 url 会被自动放行。
+				还有一点需要说明的是，该参数的值不包含web应用的 ContextPath。
+			</description>
+			<param-name>excepUrlRegex</param-name>
+			<param-value></param-value>
+		</init-param>
+	</filter> 
+	
+	<filter-mapping>
+		<filter-name>SessionFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>    -->
+
+	<!-- Spring监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- 防止Spring内存溢出监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+
+	<!-- Spring MVC servlet -->
+	<servlet>
+		<servlet-name>SpringMVC</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:conf/spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+		<async-supported>true</async-supported>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>loginUI.do</welcome-file>
+	</welcome-file-list>
+	<!-- 配置session失效时间 -->
+	<session-config>
+      <session-timeout>0</session-timeout>
+    </session-config> 
+</web-app>
