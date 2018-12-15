@@ -1,0 +1,22 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asiainfo.abdinfo.dao.IIndexMonthDataDao">
+	<!-- mybatis中最关键的标签：resultMap -->
+	<resultMap type="com.asiainfo.abdinfo.po.CoachingRecord" id="coachingRecord">
+		<result property="staffCode" column="人员编码" />
+		<result property="time" column="日期" />
+		<result property="content" column="内容" />
+		<result property="type" column="类型" />
+		<result property="managerReply" column="经理回复" />
+	</resultMap>
+	
+	
+    <!--里程碑事件 -->
+	<select id="findCoachingRecord"  resultMap="coachingRecord">
+		
+		select 人员编码,日期,内容,类型,(case when 经理回复 is null then '' else 经理回复 end) as 经理回复  
+		from gsjczda.dbo.ManagerOfComprehensiveAssessment where 人员编码=#{staffCode} order by 日期 desc
+	</select>
+	
+
+</mapper>

@@ -306,6 +306,8 @@
   list-style: none;
   padding: 20px 0 8px;
   position: relative;
+  max-height:430px;
+  overflow-y:auto;
 }
 .timeline:before {
   top: 20px;
@@ -323,6 +325,7 @@
 .timeline > li {
   margin-bottom: 5px;
   position: relative;
+  width:98%;
 }
 .timeline > li:before,
 .timeline > li:after {
@@ -398,6 +401,9 @@
 }
 .timeline-badge.info {
   background-color: #03a9f4 !important;
+}
+.timeline > li > .timeline-badge>i{
+	margin-top:8px;
 }
 .bootstrap-data-table-panel .dataTables_filter {
   text-align: right;
@@ -1261,7 +1267,7 @@ a.dt-button.active:not(.disabled) {
 .invoice-edit .tax:before,
 .invoice-edit #total_price:before,
 .invoice-edit #total_tax:before {
-  content: '€';
+  content: '鈧�';
 }
 .invoice-edit .me,
 .invoice-edit .info,
@@ -1834,6 +1840,10 @@ footer p {
     padding: 26px;
   }
 }
+.recent-comment{
+	max-height:450px;
+	overflow-y:auto;
+}
 .recent-comment .media {
   border-bottom: 1px solid #e7e7e7;
   padding-bottom: 10px;
@@ -1842,7 +1852,7 @@ footer p {
   padding-right: 25px;
 }
 .recent-comment .media-left img {
-  border-radius: 100px;
+  border-radius: 50%;
 }
 .recent-comment .media-body h4 {
   font-size: 16px;

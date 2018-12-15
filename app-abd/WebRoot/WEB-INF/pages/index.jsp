@@ -350,7 +350,7 @@
                             <div class="card">
                                 <div class="stat-widget-eight">
                                     <div class="stat-header">
-                                        <div class="header-title pull-left">Daily Visit</div>
+                                        <div class="header-title pull-left">有效信息数</div>
                                         <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
                                             <ul class="card-option-dropdown dropdown-menu">
                                                 <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
@@ -383,7 +383,7 @@
                             <div class="card">
                                 <div class="stat-widget-eight">
                                     <div class="stat-header">
-                                        <div class="header-title pull-left">Bounce Rate</div>
+                                        <div class="header-title pull-left">有效回访数</div>
                                         <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
                                             <ul class="card-option-dropdown dropdown-menu">
                                                 <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
@@ -416,7 +416,7 @@
                             <div class="card">
                                 <div class="stat-widget-eight">
                                     <div class="stat-header">
-                                        <div class="header-title pull-left">Growth Rate</div>
+                                        <div class="header-title pull-left">电话时长</div>
                                         <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
                                             <ul class="card-option-dropdown dropdown-menu">
                                                 <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
@@ -449,7 +449,7 @@
                             <div class="card">
                                 <div class="stat-widget-eight">
                                     <div class="stat-header">
-                                        <div class="header-title pull-left">Page Views</div>
+                                        <div class="header-title pull-left">远程月汇总</div>
                                         <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
                                             <ul class="card-option-dropdown dropdown-menu">
                                                 <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
@@ -478,14 +478,150 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="stat-widget-eight">
+                                    <div class="stat-header">
+                                        <div class="header-title pull-left">信息转换率排名</div>
+                                        <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
+                                            <ul class="card-option-dropdown dropdown-menu">
+                                                <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
+                                                <li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
+                                                <li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
+                                                <li><a href="#"><i class="ti-power-off"></i> Clear ist</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="stat-content">
+                                        <div class="pull-left">
+                                            <i class="ti-arrow-up color-success"></i>
+                                            <span class="stat-digit"> 14,2158.35</span>
+                                        </div>
+                                        <div class="pull-right">
+                                            <span class="progress-stats">70%</span>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-primary w-70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                                            <span class="sr-only">70% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="stat-widget-eight">
+                                    <div class="stat-header">
+                                        <div class="header-title pull-left">电话邀约率排名</div>
+                                        <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
+                                            <ul class="card-option-dropdown dropdown-menu">
+                                                <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
+                                                <li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
+                                                <li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
+                                                <li><a href="#"><i class="ti-power-off"></i> Clear ist</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="stat-content">
+                                        <div class="pull-left">
+                                            <i class="ti-arrow-up color-success"></i>
+                                            <span class="stat-digit"> 14,2158.35</span>
+                                        </div>
+                                        <div class="pull-right">
+                                            <span class="progress-stats">70%</span>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success w-70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                                            <span class="sr-only">70% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="stat-widget-eight">
+                                    <div class="stat-header">
+                                        <div class="header-title pull-left">净销售额排名</div>
+                                        <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
+                                            <ul class="card-option-dropdown dropdown-menu">
+                                                <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
+                                                <li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
+                                                <li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
+                                                <li><a href="#"><i class="ti-power-off"></i> Clear ist</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="stat-content">
+                                        <div class="pull-left">
+                                            <i class="ti-arrow-down color-danger"></i>
+                                            <span class="stat-digit"> 14,2158.35</span>
+                                        </div>
+                                        <div class="pull-right">
+                                            <span class="progress-stats">70%</span>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-warning w-70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                                            <span class="sr-only">70% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="stat-widget-eight">
+                                    <div class="stat-header">
+                                        <div class="header-title pull-left">签约率排名</div>
+                                        <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
+                                            <ul class="card-option-dropdown dropdown-menu">
+                                                <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
+                                                <li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
+                                                <li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
+                                                <li><a href="#"><i class="ti-power-off"></i> Clear ist</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="stat-content">
+                                        <div class="pull-left">
+                                            <i class="ti-arrow-down color-danger"></i>
+                                            <span class="stat-digit"> 14,2158.35</span>
+                                        </div>
+                                        <div class="pull-right">
+                                            <span class="progress-stats">70%</span>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success w-70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                                            <span class="sr-only">70% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!-- row -->
                     
                     
                     
                     
                     
-                    
-                   ====================================
+                  
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="row">
@@ -554,8 +690,129 @@
                             </div>
                         </div>
                         
-                        ====================================
-                        
+                       
+                        <div class="row">
+                                <div class="col-lg-6">
+		                            <div class="card">
+		                                <div class="card-header">
+		                                    <h3 style="font-weight:bold;letter-spacing:15px;margin-top:10px;margin-bottom:30px;text-align:center;">辅导记录</h3>
+		                                    <!-- <div class="card-header-right-icon">
+		                                        <ul>
+		                                            <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+		                                            <li class="card-option drop-menu"><i class="ti-settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
+		                                                <ul class="card-option-dropdown dropdown-menu">
+		                                                    <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
+		                                                    <li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
+		                                                    <li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
+		                                                    <li><a href="#"><i class="ti-power-off"></i> Clear ist</a></li>
+		                                                </ul>
+		                                            </li>
+		                                            <li class="doc-link"><a href="#"><i class="ti-link"></i></a></li>
+		                                        </ul>
+		                                    </div> -->
+		                                </div>
+		                                <div class="recent-comment m-t-15">
+		                                    <%-- <div class="media">
+		                                        <div class="media-left">
+		                                            <a href="#"><img class="media-object" src="${basePath}/images/avatar/1.jpg" alt="..."></a>
+		                                        </div>
+		                                        <div class="media-body">
+		                                            <h4 class="media-heading color-primary">心灵感悟：Update dataUpdate dataUpdate data</h4>
+		                                            <p>经理回复：</p>
+		                                            <p class="comment-date">10 min ago</p>
+		                                        </div>
+		                                    </div>
+		                                    <div class="media">
+		                                        <div class="media-left">
+		                                            <a href="#"><img class="media-object" src="${basePath}/images/avatar/6.jpg" alt="..."></a>
+		                                        </div>
+		                                        <div class="media-body">
+		                                            <h4 class="media-heading color-success">遇到的困难</h4>
+		                                            <p>经理回复：</p>
+		                                            <p class="comment-date">1 hour ago</p>
+		                                        </div>
+		                                    </div>
+		                                    <div class="media">
+		                                        <div class="media-left">
+		                                            <a href="#"><img class="media-object" src="${basePath}/images/avatar/3.jpg" alt="..."></a>
+		                                        </div>
+		                                        <div class="media-body">
+		                                            <h4 class="media-heading color-danger">心灵感悟</h4>
+		                                            <p>经理回复：</p>
+		                                            <div class="comment-date">Yesterday</div>
+		                                        </div>
+		                                    </div>
+		                                    <div class="media no-border">
+		                                        <div class="media-left">
+		                                            <a href="#"><img class="media-object" src="${basePath}/images/avatar/6.jpg" alt="..."></a>
+		                                        </div>
+		                                        <div class="media-body">
+		                                            <h4 class="media-heading color-info">遇到的困难：</h4>
+		                                            <p>经理回复：</p>
+		                                            <div class="comment-date">Yesterday</div>
+		                                        </div>
+		                                    </div> --%>
+		                                </div>
+		                            </div>
+		                            <!-- /# card -->
+		                        </div>
+                                <div class="col-lg-6">
+		                            <div class="card alert">
+		                                <div class="card-header">
+		                                    <h3 style="font-weight:bolder;letter-spacing:15px;margin-top:10px;text-align:center;">里程碑</h3>
+		                                </div>
+		                                <div class="card-body">
+		                                    <ul class="timeline">
+		                                        <!-- <li>
+		                                            <div class="timeline-badge primary"><i class="fa fa-smile-o"></i></div>
+		                                            <div class="timeline-panel">
+		                                                <div class="timeline-heading">
+		                                                    <h5 class="timeline-title">Youtube, a video-sharing website, goes live.</h5>
+		                                                </div>
+		                                                <div class="timeline-body">
+		                                                    <p>10 minutes ago</p>
+		                                                </div>
+		                                            </div>
+		                                        </li>
+		                                        <li>
+		                                            <div class="timeline-badge warning"><i class="fa fa-sun-o"></i></div>
+		                                            <div class="timeline-panel">
+		                                                <div class="timeline-heading">
+		                                                    <h5 class="timeline-title">Mashable, a news website and blog, goes live.</h5>
+		                                                </div>
+		                                                <div class="timeline-body">
+		                                                    <p>20 minutes ago</p>
+		                                                </div>
+		                                            </div>
+		                                        </li>
+		                                        <li>
+		                                            <div class="timeline-badge danger"><i class="fa fa-times-circle-o"></i></div>
+		                                            <div class="timeline-panel">
+		                                                <div class="timeline-heading">
+		                                                    <h5 class="timeline-title">Google acquires Youtube.</h5>
+		                                                </div>
+		                                                <div class="timeline-body">
+		                                                    <p>30 minutes ago</p>
+		                                                </div>
+		                                            </div>
+		                                        </li>
+		                                        <li>
+		                                            <div class="timeline-badge success"><i class="fa fa-check-circle-o"></i></div>
+		                                            <div class="timeline-panel">
+		                                                <div class="timeline-heading">
+		                                                    <h5 class="timeline-title">StumbleUpon is acquired by eBay. </h5>
+		                                                </div>
+		                                                <div class="timeline-body">
+		                                                    <p>15 minutes ago</p>
+		                                                </div>
+		                                            </div>
+		                                        </li> -->
+		                                    </ul>
+		                                </div>
+		                            </div>
+		                            <!-- /# card -->
+		                        </div>
+                            </div>
                         
                         
                         
@@ -732,151 +989,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="card alert">
-                                <div class="card-header">
-                                    <h4 class="f-s-14">Todo</h4>
-                                </div>
-                                <div class="todo-list">
-                                    <div class="tdl-holder">
-                                        <div class="tdl-content">
-                                            <ul>
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox"><i></i><span>Post three to six times on Twitter.</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox" checked><i></i><span>Post one to two times on Facebook.</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox"><i></i><span>Post two to three times to Instagram and LinkedIn. </span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox" checked><i></i><span>Follow back those who follow you</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox" checked><i></i><span>Connect with one new person</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <input type="text" class="tdl-new form-control" placeholder="Write new item and hit 'Enter'...">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /# column -->
-                        <div class="col-lg-4">
-                            <div class="card alert">
-                                <div class="card-header">
-                                    <h4 class="f-s-14">Timeline</h4>
-                                </div>
-                                <div class="card-body">
-                                    <ul class="timeline">
-                                        <li>
-                                            <div class="timeline-badge primary"><i class="fa fa-smile-o"></i></div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h5 class="timeline-title">Youtube, a video-sharing website, goes live.</h5>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p>10 minutes ago</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-badge warning"><i class="fa fa-sun-o"></i></div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h5 class="timeline-title">Mashable, a news website and blog, goes live.</h5>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p>20 minutes ago</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-badge danger"><i class="fa fa-times-circle-o"></i></div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h5 class="timeline-title">Google acquires Youtube.</h5>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p>30 minutes ago</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-badge success"><i class="fa fa-check-circle-o"></i></div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h5 class="timeline-title">StumbleUpon is acquired by eBay. </h5>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p>15 minutes ago</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- /# card -->
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="card p-0">
-                                <div class="profile-widget-one">
-                                    <div class="profile-one-user-photo">
-                                        <div class="profile-one-bg">
-                                            <img class="img-responsive" src="assets/images/profile-bg.jpg" alt="" />
-                                            <div class="bg-overlay"></div>
-                                        </div>
-                                        <div class="user-photo"><img src="assets/images/user-female.png" alt="" /></div>
-                                    </div>
-                                    <div class="profile-one-user-content">
-                                        <ul>
-                                            <li>
-                                                <div class="user-social">
-                                                    <h4>Tweets</h4>
-                                                    <div class="social-digit">15.5k</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="user-earning">
-                                                    <h4>Followers</h4>
-                                                    <div class="social-digit">5412</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="user-sold">
-                                                    <h4>Following</h4>
-                                                    <div class="social-digit">1234</div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="profile-one-user-button text-center">
-                                        <button class="btn btn-primary btn-outline profile-btn-one">View Profile</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /# column -->
-                    </div>
+                    
                     <!-- /# row -->
                     <div class="row">
                         <div class="col-lg-12">
@@ -924,5 +1037,116 @@
     <script src="${basePath}/js/lib/owl-carousel/owl.carousel.min.js"></script>
     <script src="${basePath}/js/lib/owl-carousel/owl.carousel-init.js"></script>
   <%--   <script src="${basePath}/js/scripts.js"></script> --%>
+  
+  <script>
+    	
+    	$(document).ready(function() {
+    		console.log("ceshi")
+    		
+    		var icon=["address-book","address-card", 
+    			"bandcamp","bath",
+    			"eercast","envelope-open",,"etsy",
+    			"free-code-camp","grav","handshake-o","id-badge","id-card",
+    			"imdb","linode","meetup","microchip","podcast",
+    			"quora","ravelry","shower","snowflake-o","superpowers","telegram","thermometer-empty",
+    			"thermometer-three-quarters","battery-full","bed","beer","bell","bicycle","binoculars",
+    			"birthday-cake","blind","bluetooth","bolt","bomb","book","bookmark",
+    			"bookmark-o","braille","briefcase","bug","building","bullhorn","bullseye",
+    			"calculator","calendar","calendar-minus-o"
+    			,"calendar-times-o","camera","camera-retro","car","fire-extinguisher","flag",
+    			"flag-checkered","flag-o","flash (alias)","flask","folder","folder-o","folder-open",
+    			"folder-open-o","frown-o","futbol-o","gamepad","gavel","gear (alias)","gears (alias)",
+    			"gift","glass","glob"]
+    			console.log(icon.length)
+    			console.log("这是icon的数组长度")
+	        $.ajax({
+	           	type : 'get',  //传输类型
+	           	url : 'education.do?staffCode=18060404',
+	           	dataType : 'json', //返回数据形式为json
+	           	success : function(result) {
+	               	console.log(result)
+	               	if(result.list.length==0){
+	               		$(".timeline").append("<div style='height:200px;text-align:center;line-height:200px;font-size:30px;'>暂无数据</div>")
+	               	}
+	                for(var i=0;i<result.list.length;i++){
+	                	var random = Math.floor(Math.random()*(0-68+1)+68);
+	                	var color='#'+Math.floor(Math.random()*0xffffff).toString(16);
+	                	var li="<li>"+
+	                    "<div class='timeline-badge' style='background-color:"+color+";'>"+
+	                    	"<i class='fa fa-"+icon[random]+"'></i>"+
+	                    "</div>"+
+	                    "<div class='timeline-panel'>"+
+	                    	"<div class='timeline-heading'>"+
+	                            "<h4 class='timeline-title' style='font-weight:bold;'>"+result.list[i].incident+"</h4>"+
+	                        "</div>"+
+	                        "<div class='timeline-heading'>"+
+	                            "<h5 class='timeline-title'>"+result.list[i].inspiration+"</h5>"+
+	                        "</div>"+
+	                        "<div class='timeline-body'>"+
+	                            "<p style='text-align:right;'>"+result.list[i].time+"</p>"+
+	                        "</div>"+
+	                    "</div>"+
+	                "</li>";
+	                	$(".timeline").append(li)
+	                }
+	           	} 
+			});
+    		
+    		$.ajax({
+	           	type : 'get',  //传输类型
+	           	url : 'coachingRecord.do?staffCode=18060404',
+	           	dataType : 'json', //返回数据形式为json
+	           	success : function(result) {
+	               	console.log(result.length)
+	               	console.log("=======================")
+	               	if(result.length==0){
+	               		$(".recent-comment").append("<div style='height:200px;text-align:center;line-height:200px;font-size:30px;'>暂无数据</div>")
+	               	}
+	                for(var i=0;i<result.length;i++){
+						if(result[i].type=="心得感悟"){
+							var color='#'+Math.floor(Math.random()*0xffffff).toString(16);
+		                	var li="<div class='media'>"+
+			                        "<div class='media-left'>"+
+			                        "<a href='#'>"+
+			                        	"<img class='media-object' src='${basePath}/images/avatar/1.jpg' alt='...'>"+
+			                        "</a>"+
+			                    "</div>"+
+			                    "<div class='media-body'>"+
+			                        "<h4 class='media-heading color-primar'>"+"<text style='color:"+color+";font-weight:bold;'>"+result[i].type+"</text>"+"："+result[i].content+"</h4>"+
+			                        "<p>"+"<text style='font-weight:bold;font-size:18px;'>经理回复：</text>"+result[i].managerReply+"</p>"+
+			                        "<p class='comment-dat'>"+result[i].time+"</p>"+
+			                    "</div>"+
+			                "</div>";
+		                	$(".recent-comment").append(li)
+						}else{
+							var color='#'+Math.floor(Math.random()*0xffffff).toString(16);
+		                	var li="<div class='media'>"+
+			                        "<div class='media-left'>"+
+			                        "<a href='#'>"+
+			                        	"<img class='media-object' src='${basePath}/images/avatar/6.jpg' alt='...'>"+
+			                        "</a>"+
+			                    "</div>"+
+			                    "<div class='media-body'>"+
+			                        "<h4 class='media-heading color-primar'>"+"<text style='color:"+color+";font-weight:bold;'>"+result[i].type+"</text>"+"："+result[i].content+"</h4>"+
+			                        "<p>"+"<text style='font-weight:bold;font-size:18px;'>经理回复：</text>"+result[i].managerReply+"</p>"+
+			                        "<p class='comment-dat'>"+result[i].time+"</p>"+
+			                    "</div>"+
+			                "</div>";
+		                	$(".recent-comment").append(li)
+						}
+	                	
+	                }
+	           	} 
+			});
+    		
+	        
+	    });
+    	
+    
+    	
+    	
+    </script>
+  
+  
 </body>
 </html>
