@@ -12,8 +12,7 @@
 	
 	
     <!--里程碑事件 -->
-	<select id="findEducation" parameterType="java.util.Map" resultMap="education">
-		
+	<select id="findEducation" parameterType="java.util.Map" resultMap="education">	
 		select 人员编码, 日期,姓名,事件,个人感悟  from GSJCZDA.dbo.[MilestoneEvents] 
 		where 人员编码=#{staffCode} 
 		<if test="time!=null and time!=''">

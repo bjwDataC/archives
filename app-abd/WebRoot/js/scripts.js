@@ -177,7 +177,7 @@
     /*  pace Loader
     -------------*/
 
-    paceOptions = {
+    paceOptions ={
         elements: true
     };
 
