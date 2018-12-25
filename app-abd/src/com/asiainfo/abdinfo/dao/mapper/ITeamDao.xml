@@ -1,0 +1,60 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asiainfo.abdinfo.dao.ITeamDao">
+	<!-- mybatis中最关键的标签：resultMap -->
+	<!-- 团队参与 -->
+	<select id="fingTeam" parameterType="java.util.Map" resultType="CoachingRecord">
+		SELECT P.日期 time,P.类别 type,p.内容 content
+		FROM GSJCZDA.dbo.[PractisingTeamwork] P
+		left join [PUBLICDATA].dbo.[DS_STAFF] S
+		on S.人员编码=P.人员编码 where P.人员编码=#{staffCode} order by P.日期 desc
+	</select>
+	<!-- 查找公司知识中的公共课 -->
+	<select id="fingCompanyKnowledge" parameterType="java.util.Map" resultType="CoachingRecord">
+		SELECT 类别 type,级别 content,课程名称 managerReply,考试成绩 staffCode,考试日期 time FROM GSJCZDA.dbo.[TrainingCourse] 
+		WHERE 人员编码=#{staffCode} order by 考试日期 desc
+	</select>
+	<!-- 查找新员工入职培训 -->
+	<select id="fingInductionTraining" parameterType="java.util.Map" resultType="CoachingRecord">
+		SELECT 总成绩 staffCode,等级 content  FROM PeiXun.dbo.[PXlevel]
+		WHERE 人员编码=#{staffCode}
+	</select>
+	
+	<!-- 查找读书心得 -->
+	<select id="fingReadingFeeling" parameterType="java.util.Map" resultType="CoachingRecord">
+		select (case when clockBook is null then '' else clockBook end) type,(case when clockDirectory is null then '' else clockDirectory end) managerReply,ReadingFeeling content,date time from [XTXQ].[dbo].[Reading_comprehension]  
+		where staffCode=#{staffCode} and clockBook is not null order by date desc
+	</select>
+	
+	<!-- 查找管理干部储备池成绩 -->
+	<select id="fingManagementReservePool" parameterType="java.util.Map" resultType="Management">
+		SELECT TT.年 year,TT.班级 classGrade,TT.期数 periods,TT.分数 score,TT.排名 ranking
+		from 
+		(
+		select t.*,RANK() over(order by 分数 desc) 排名 from
+		(SELECT p.年,p.班级,p.期数,p.姓名,p.人员编码,SUM(分数) 分数
+		   FROM [HRM].[dbo].[TMScoreRecord] p,[HRM].[dbo].[TMStudentsList] w
+		  where  w.人员编码=p.人员编码 and 类型!='阶段考核'
+		  group by p.姓名,p.人员编码,p.年,p.班级,p.期数) t
+		) TT where 人员编码=#{staffCode}
+	</select>
+	
+	<!-- 查找任职资格答辩 -->
+	<select id="findQualification" parameterType="java.util.Map" resultType="Qualification">
+		SELECT convert(date,申请日期,21) date,目前职称 nowPosition,申请职称 aplayForPosition,申请职称启用月份 aplayMonth,目前职称启用年份 + 目前职称启用月份 nowStartTime,申请职称启用年份 + 申请职称启用月份 aplayForStartTime FROM [GSJCZDA].[dbo].[HonoraryTitle] H
+		LEFT JOIN [PUBLICDATA].dbo.[DS_STAFF] S ON H.人员编码 = S.人员编码
+		where H.人员编码=#{staffCode}
+		
+		UNION ALL
+		select 答辩时间,目前职称,本次答辩晋级级别 申请职称,convert(nvarchar(10),涨薪月份)+'月' 申请职称启用月份,REPLACE(convert(nvarchar(7),目前职称晋级时间),'-','年')+'月' 目前职称启用时间,REPLACE(convert(nvarchar(7),答辩时间),'-','年')+'月' 申请职称启用时间
+		from HRM..CMCompetencyAssessment H
+		LEFT JOIN [PUBLICDATA].dbo.[DS_STAFF] S ON H.人员编码 = S.人员编码
+		WHERE 是否通过 = '是' AND H.人员编码=#{staffCode}
+		order by date desc
+	</select>
+	
+	
+    
+	
+
+</mapper>

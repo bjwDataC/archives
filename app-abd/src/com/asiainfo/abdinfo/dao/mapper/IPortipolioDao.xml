@@ -1,0 +1,127 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asiainfo.abdinfo.dao.IPortipolioDao">
+	<!-- mybatis中最关键的标签：resultMap -->
+	<!-- 单项奖个数查询 -->
+	<resultMap type="com.asiainfo.abdinfo.po.Portipolio" id="portipolioNum">
+		<result property="staffCode" column="name" />
+		<result property="itegral" column="个数" />
+		<result property="month" column="月" />
+	</resultMap>
+	
+	<!-- 单项奖积分查询 -->
+	<resultMap type="com.asiainfo.abdinfo.po.Portipolio" id="portipolio">
+		<result property="staffCode" column="name" />
+		<result property="itegral" column="积分" />
+		<result property="month" column="月" />
+	</resultMap>
+	
+	<!-- 小红花信息查询 -->
+	<resultMap type="com.asiainfo.abdinfo.po.Portipolio" id="redFlower">
+		<result property="staffCode" column="人员编码" />
+		<result property="month" column="月" />
+		<result property="itegral" column="数量" />
+	</resultMap>
+	
+	<!--优质服务金额查询 -->
+	<resultMap type="com.asiainfo.abdinfo.po.Portipolio" id="firstServiceMoney">
+		<result property="staffCode" column="name" />
+		<result property="month" column="月" />
+		<result property="itegral" column="奖励金额" />
+	</resultMap>
+	
+	<!--优质服务积分查询 -->
+	<resultMap type="com.asiainfo.abdinfo.po.Portipolio" id="firstService">
+		<result property="staffCode" column="name" />
+		<result property="month" column="月" />
+		<result property="itegral" column="积分" />
+	</resultMap>
+	
+	<!--年份信息 -->
+	<resultMap type="com.asiainfo.abdinfo.po.Portipolio" id="year">
+		<result property="staffCode" column="人员编码" />
+		<result property="year" column="年" />
+	</resultMap>
+	
+	
+    <!--小红花信息 -->
+	<select id="findRedFlower" parameterType="java.util.Map" resultMap="redFlower">
+        SELECT num 月,COUNT(month(发起日期)) 数量  FROM [HRM].[dbo].[yuefen] h 
+        left join [LRF].[dbo].[LRFlowers_new] l on num=month(发起日期)
+		and 人员编码=#{staffCode} and year(发起日期)=#{year}
+		group by num
+        
+	</select>
+	
+	<!--单项奖个数查询 -->
+	<select id="findPortipolioNum" parameterType="java.util.Map" resultMap="portipolioNum">
+		
+        SELECT num 月,(case when  b.个数 is null then 0 else b.个数 end) 个数 from [HRM].dbo.yuefen a left join 
+		
+		(SELECT count(month(同步日期)) 个数,month(同步日期) 月份 FROM dbo.[SGMSingleprize] H
+		        LEFT JOIN [PUBLICDATA].dbo.[DS_STAFF] S ON H.人员编码 = S.人员编码
+		        where S.人员编码=#{staffCode} and year(同步日期)=#{year}
+		        group by year(同步日期),month(同步日期),S.人员编码) b on num=b.月份
+		order by num
+        
+	</select>
+	
+	<!--单项奖积分查询 -->
+	<select id="findPortipolio" parameterType="java.util.Map" resultMap="portipolio">
+        SELECT num 月,(case when  b.获奖积分 is null then 0 else b.获奖积分 end) 积分 
+        from [HRM].dbo.yuefen a left join
+		(SELECT sum(获奖积分) 获奖积分,month(同步日期) 月份 FROM dbo.[SGMSingleprize] H
+		        LEFT JOIN [PUBLICDATA].dbo.[DS_STAFF] S ON H.人员编码 = S.人员编码
+		        where S.人员编码=#{staffCode} and year(同步日期)=#{year}
+		        group by year(同步日期),month(同步日期),S.人员编码) b on num=b.月份
+	</select>
+	
+	<!--优质服务积分查询 -->
+	<select id="findFirstService" parameterType="java.util.Map" resultMap="firstService">
+		
+		select num 月,sum(case when  b.奖励积分 is null then 0 else b.奖励积分 end) 积分 from 
+		[HRM].dbo.yuefen a left join 
+		
+		Quality_service.dbo.[HSScore] b on num=month(发起时间) and 人员编码=#{staffCode} and year(发起时间)=#{year} GROUP BY num;
+		
+	</select>
+	
+	<!--优质服务金额查询 -->
+	<select id="findFirstServiceMoney" parameterType="java.util.Map" resultMap="firstServiceMoney">
+	
+		select num 月,sum(case when  b.奖励金额 is null then 0 else b.奖励金额 end) 奖励金额 from 
+
+		 [HRM].dbo.yuefen a left join 
+		
+		Quality_service.dbo.[HSScore] b on num=month(发起时间)
+		and 人员编码=#{staffCode} and year(发起时间)=#{year} GROUP BY num
+	</select>
+	
+	<!-- 小优个数和奖金 -->
+	<select id="findSmallQualityService" resultType="Portipolio">
+		select num month,COUNT(biaoyangxingshi) itegral,sum(case when biaoyangxingshi='QQ' then 20
+		when biaoyangxingshi='短信' then 20
+		when biaoyangxingshi='方案跟盯' then 10
+		when biaoyangxingshi='方案制定' then 20
+		when biaoyangxingshi='方案讲解' then 20
+		when biaoyangxingshi='面谈' then 20
+		when biaoyangxingshi='其他' then 20
+		when biaoyangxingshi='完善客户档案' then 10
+		when biaoyangxingshi='微信' then 20
+		when biaoyangxingshi='语言需求了解' then 20
+		when biaoyangxingshi='远程' then 20
+		when biaoyangxingshi='自诉' then 20
+		end) as money from [HRM].dbo.yuefen a left join 
+		DW.dbo.CSC_SmallQualityService b on a.num=MONTH(b.createdon_time)
+		and zixunshi_no=#{staffCode} and YEAR(createdon_time)=#{year} GROUP BY num ORDER BY num
+	</select>
+	
+	<!--年份信息 -->
+	<select id="findYear" parameterType="java.util.Map" resultMap="year">
+		
+		SELECT YEAR(发起日期) 年 FROM [LRF].[dbo].[LRFlowers_new] 
+		where 人员编码=#{staffCode} group by YEAR(发起日期)
+	</select>
+		
+
+</mapper>

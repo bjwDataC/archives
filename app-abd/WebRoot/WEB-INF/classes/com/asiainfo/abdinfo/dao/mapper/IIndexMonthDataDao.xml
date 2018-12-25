@@ -1,0 +1,65 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asiainfo.abdinfo.dao.IIndexMonthDataDao">
+	<!-- mybatis中最关键的标签：resultMap -->
+	<!-- <resultMap type="com.asiainfo.abdinfo.po.IndexMonthData" id="coachingRecord">
+		<result property="staffCode" column="人员编码" />
+		<result property="time" column="日期" />
+	</resultMap> -->
+	
+	
+    <!-- 月数据多维度 -->
+	<select id="findMonthData"  resultType="IndexMonthData">
+		select m.row_num as ranking,h.sta_type,m.type_count from (SELECT sta_type from GSJCZDA.dbo.constantTable_whc) h 
+		LEFT JOIN (select row_num,sta_type,name_no,type_count from (select ROW_NUMBER() OVER(PARTITION BY d.事业部,sta_type order by type_count desc) as 
+		row_num ,z.sta_type ,z.name_no ,z.type_count from [ZXS_CZDA].[dbo].[ZXS_Multidimensional_analysis_month]z 
+		INNER JOIN PUBLICDATA.dbo.DS_STAFF d ON z.name_no=d.人员编码 where  z.type_month=#{date} and d.事业部=(select 事业部 from PUBLICDATA.dbo.DS_STAFF where 人员编码=#{staffCode})) a 
+		where a.name_no=#{staffCode} and sta_type in ('到款金额','签约金额','有效数据','远程数据','信息转换率','电话邀约率','来访数据','签约率')) m 
+		ON h.sta_type=m.sta_type;
+	</select>
+	
+	
+	<!-- 以下是排名情况 -->
+	<!-- <select id="rankingDK"  resultType="IndexMonthData">
+		select * from (select ROW_NUMBER() OVER(order by type_count desc) as ranking ,sta_type ,name_no,type_count from [ZXS_CZDA].[dbo].[ZXS_Multidimensional_analysis_month]z 
+		INNER JOIN PUBLICDATA.dbo.DS_STAFF d ON z.name_no=d.人员编码 where d.事业部 = (select 事业部 from PUBLICDATA.dbo.DS_STAFF where 人员编码=#{staffCode})
+		AND sta_type='到款金额' and type_month=#{date}) a where a.name_no=#{staffCode}
+	</select>
+	<select id="rankingQY"  resultType="IndexMonthData">
+		select * from (select ROW_NUMBER() OVER(order by type_count desc) as ranking ,sta_type ,name_no ,type_count from [ZXS_CZDA].[dbo].[ZXS_Multidimensional_analysis_month]z 
+		INNER JOIN PUBLICDATA.dbo.DS_STAFF d ON z.name_no=d.人员编码 where d.事业部 = (select 事业部 from PUBLICDATA.dbo.DS_STAFF where 人员编码=#{staffCode})
+		AND sta_type='签约金额' and type_month='2018-11-01') a where a.name_no=#{staffCode}
+	</select>
+	<select id="rankingYX"  resultType="IndexMonthData">
+		select * from (select ROW_NUMBER() OVER(order by type_count desc) as ranking ,sta_type ,name_no ,type_count from [ZXS_CZDA].[dbo].[ZXS_Multidimensional_analysis_month]z 
+		INNER JOIN PUBLICDATA.dbo.DS_STAFF d ON z.name_no=d.人员编码 where d.事业部 = (select 事业部 from PUBLICDATA.dbo.DS_STAFF where 人员编码=#{staffCode})
+		AND sta_type='有效数据' and type_month=#{date}) a where a.name_no=#{staffCode}
+	</select>
+	<select id="rankingYC"  resultType="IndexMonthData">
+		select * from (select ROW_NUMBER() OVER(order by type_count desc) as ranking ,sta_type ,name_no ,type_count from [ZXS_CZDA].[dbo].[ZXS_Multidimensional_analysis_month]z 
+		INNER JOIN PUBLICDATA.dbo.DS_STAFF d ON z.name_no=d.人员编码 where d.事业部 = (select 事业部 from PUBLICDATA.dbo.DS_STAFF where 人员编码=#{staffCode})
+		AND sta_type='远程数据' and type_month=#{date}) a where a.name_no=#{staffCode}
+	</select>
+	<select id="rankingXX"  resultType="IndexMonthData">
+		select * from (select ROW_NUMBER() OVER(order by type_count desc) as ranking ,sta_type ,name_no ,type_count from [ZXS_CZDA].[dbo].[ZXS_Multidimensional_analysis_month]z 
+		INNER JOIN PUBLICDATA.dbo.DS_STAFF d ON z.name_no=d.人员编码 where d.事业部 = (select 事业部 from PUBLICDATA.dbo.DS_STAFF where 人员编码=#{staffCode})
+		AND sta_type='信息转换率' and type_month=#{date}) a where a.name_no=#{staffCode}
+	</select>
+	<select id="rankingDH"  resultType="IndexMonthData">
+		select * from (select ROW_NUMBER() OVER(order by type_count desc) as ranking ,sta_type ,name_no ,type_count from [ZXS_CZDA].[dbo].[ZXS_Multidimensional_analysis_month]z 
+		INNER JOIN PUBLICDATA.dbo.DS_STAFF d ON z.name_no=d.人员编码 where d.事业部 = (select 事业部 from PUBLICDATA.dbo.DS_STAFF where 人员编码=#{staffCode})
+		AND sta_type='电话邀约率' and type_month='2018-11-01') a where a.name_no=#{staffCode}
+	</select>
+	<select id="rankingLF"  resultType="IndexMonthData">
+		select * from (select ROW_NUMBER() OVER(order by type_count desc) as ranking ,sta_type ,name_no ,type_count from [ZXS_CZDA].[dbo].[ZXS_Multidimensional_analysis_month]z 
+		INNER JOIN PUBLICDATA.dbo.DS_STAFF d ON z.name_no=d.人员编码 where d.事业部 = (select 事业部 from PUBLICDATA.dbo.DS_STAFF where 人员编码=#{staffCode})
+		AND sta_type='来访数据' and type_month=#{date}) a where a.name_no=#{staffCode}
+	</select>
+	<select id="rankingQYL"  resultType="IndexMonthData">
+		select * from (select ROW_NUMBER() OVER(order by type_count desc) as ranking ,sta_type ,name_no ,type_count from [ZXS_CZDA].[dbo].[ZXS_Multidimensional_analysis_month]z 
+		INNER JOIN PUBLICDATA.dbo.DS_STAFF d ON z.name_no=d.人员编码 where d.事业部 = (select 事业部 from PUBLICDATA.dbo.DS_STAFF where 人员编码=#{staffCode})
+		AND sta_type='签约率' and type_month=#{date}) a where a.name_no=#{staffCode}
+	</select> -->
+	
+
+</mapper>

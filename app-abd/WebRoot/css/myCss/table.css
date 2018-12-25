@@ -1,0 +1,20 @@
+
+.table-hover{
+	margin:0 auto;
+}
+
+.tableType{
+	width:70%;
+	margin:40px auto;
+}
+
+.tableType .table-hover{
+	text-align:center;
+}
+
+.table .tableCap{
+	margin:0 auto;
+	font-size:25px;
+	text-align:center;
+	
+}

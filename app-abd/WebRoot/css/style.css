@@ -306,7 +306,8 @@
   list-style: none;
   padding: 20px 0 8px;
   position: relative;
-  max-height:430px;
+  min-height:400px;
+  max-height:750px;
   overflow-y:auto;
 }
 .timeline:before {
@@ -386,6 +387,7 @@
 .timeline-body > p {
   font-size: 12px;
   margin-bottom: 10px;
+  text-align:right;
 }
 .timeline-badge.primary {
   background-color: #03a9f5 !important;
@@ -1841,7 +1843,7 @@ footer p {
   }
 }
 .recent-comment{
-	max-height:450px;
+	max-height:750px;
 	overflow-y:auto;
 }
 .recent-comment .media {
@@ -1864,7 +1866,7 @@ footer p {
   color: #252525;
 }
 .recent-comment .comment-date {
-  float: left;
+  float: right;
   color: #252525;
   font-family: 'MontserratLight', sans-serif;
   font-size: 12px;
@@ -3259,7 +3261,6 @@ tbody tr td:last-child {
 }
 .product-2-details .product-2-des .product_des p {
   font-size: 13px;
-  font-style: italic;
 }
 .product-2-details .product-2-button {
   border-left: 1px solid #e7e7e7;
@@ -4159,6 +4160,59 @@ p {
 .widget-line-list li span {
   font-size: 12px;
 }
+
+
+
+
+
+
+  
+
+.education-main{float: left;width: 100%;}
+.education-main ul {padding: 50px 0 50px 0px;}
+.education-main  ul li{    margin-bottom: 150px;padding-left: 40px;position: relative;
+}
+.education-main  ul li span{ width: 0;
+    height: 0;position: absolute;top: 40px;left: -10px;
+    border-top: 16px solid transparent;
+    border-left: 32px solid #03a9f5;display: inherit;
+    border-bottom: 16px solid transparent;
+}
+.education-main  ul li:last-child{margin-bottom: 0;}
+.education-main  ul li h3{font-size: 24px;font-weight: 600;margin-bottom: 8px;overflow: hidden;}
+.education-main  ul li h4{font-size: 16px;color: #888888;margin-top: 10px;}
+.education-main  ul.left-items {text-align: right;}
+.education-main  ul.left-items li{padding-right: 40px;padding-left: 0;}
+.education-main  ul.left-items li span{left: initial;right: -10px;    border-right: 32px solid #1de9b6;
+    border-left: initial;}
+    .education-main .row{margin: 0}
+    .education-main .col-md-6 {padding: 0;}
+.education-main  ul.right-items{    margin-top: 110px;}
+.education-main  ul.right-items li{margin-top: 0px;}
+.education-main  ul.right-items li:last-child{margin-bottom: 0px;}
+.education-main .left-grid{ border-right: 1px solid #ccc;}
+.education-main  ul.left-items h4{
+	text-align:left;
+	padding-left:10px;
+}
+.education-main  ul.right-items h4{
+	text-align:right;
+	padding-right:10px;
+}
+.education-main  ul.left-items div{
+	padding-right:15px;
+}
+.education-main  ul.right-items div{
+	padding-left:15px;
+}
+    
+
+
+
+
+
+
+
 /*
 /* Version: 1.0
 */

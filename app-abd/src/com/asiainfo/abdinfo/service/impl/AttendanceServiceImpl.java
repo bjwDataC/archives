@@ -17,6 +17,8 @@ public class AttendanceServiceImpl implements AttendanceService{
 	
 	@Autowired
 	private AttendanceDao attendanceDao;
+	
+	
 
 	@Override
 	public JSONObject getAttendan(Map map) {
@@ -54,6 +56,12 @@ public class AttendanceServiceImpl implements AttendanceService{
 		objDa.put("xAxisData", xAxisData);
 		objDa.put("seriesData", seriesData);
 		return objDa;
+	}
+
+
+	@Override
+	public Person getBackGround(Map map) {		
+		return attendanceDao.selectAttendance(map);
 	}
 
 }

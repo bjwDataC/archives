@@ -11,7 +11,7 @@
 	</resultMap>
 	
 	
-    <!--里程碑事件 -->
+    <!--辅导记录 -->
 	<select id="findCoachingRecord"  resultMap="coachingRecord">
 		
 		select 人员编码,日期,内容,类型,(case when 经理回复 is null then '' else 经理回复 end) as 经理回复  

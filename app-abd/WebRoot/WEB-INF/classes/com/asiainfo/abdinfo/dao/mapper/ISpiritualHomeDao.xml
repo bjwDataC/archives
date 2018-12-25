@@ -1,0 +1,18 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asiainfo.abdinfo.dao.ISpiritualHomeDao">
+	<!-- mybatis中最关键的标签：resultMap -->
+	
+	<!--日总结 -->
+	<select id="findDaySummarize"  resultType="coachingRecord">
+		SELECT createtime as time,content FROM  XTXQ.dbo.Reading_reflection 
+		WHERE staffCode=#{staffCode} and types='今日感想' order by createtime desc
+	</select>
+    <!--月总结 -->
+	<select id="findMonthSummarize"  resultType="coachingRecord">
+		SELECT 日期 as time,类型 as type,内容 as content,(case when 经理回复 is null then '' else 经理回复 end) as managerReply 
+		FROM GSJCZDA.dbo.ManagerOfComprehensiveAssessment where 人员编码=#{staffCode} order by 日期 desc
+	</select>
+	
+
+</mapper>

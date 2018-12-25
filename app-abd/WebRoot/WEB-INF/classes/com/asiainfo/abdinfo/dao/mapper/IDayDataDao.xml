@@ -1,0 +1,64 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asiainfo.abdinfo.dao.IDayDataDao">
+	<!-- 日数据 ***小优 -->
+	 <!-- <resultMap type="com.asiainfo.abdinfo.po.DayDate" id="dayDate">
+		<collection property="smallExcellent" ofType="com.asiainfo.abdinfo.po.SmallExcellent" column="smallDate">
+		
+		</collection>
+	  </resultMap>  -->
+
+
+
+
+	<!-- 信息 -->
+	<select id="selectInfo" parameterType="java.util.Map" resultType="com.asiainfo.abdinfo.po.DayInfo">
+		select aa.zixunshi_no as staffCode,
+		aa.[date] as
+		[huangTiaoDate],
+		aa.count_huangtiao as huangTiaoCount,
+		bb.日期 failDate,
+		bb.失败客户数 failCount,
+		cc.[DATE] AS effectiveDate,
+		cc.Effective_number AS
+		effectiveCount,
+		dd.日期 AS infoDate,
+		dd.信息数 AS infoCount
+		from
+		[ZXS].[dbo].[ZXS_Huangtiao] aa --where zixunshi_no='16040801'
+		full JOIN
+		ZXS..ZXS_Dashibai bb ON aa.zixunshi_no=bb.咨询师人员编码 and
+		aa.[date]=bb.日期
+		full JOIN [DW].[dbo].[CSC_Effective_number] cc ON
+		aa.zixunshi_no=cc.zixunshi_no and aa.[date]=cc.[date]
+		full JOIN (SELECT
+		姓名 [zixunshi], 人员编码 [zixunshi_no],日期,SUM(分配信息数)[信息数]
+		FROM
+		[XX].[dbo].[DistributionRecords]
+		GROUP BY [姓名],[人员编码],日期) dd ON
+		aa.zixunshi_no=dd.zixunshi_no and
+		aa.[date]=dd.日期
+		where
+		aa.zixunshi_no=#{staffCode} and aa.[date]&gt;=#{beginData} AND
+		aa.[date] &lt;=#{endData}
+		ORDER BY aa.[date]
+	</select>
+
+
+
+	<!-- 小优 -->
+	<select id="smallExcellent" parameterType="java.util.Map" resultType="com.asiainfo.abdinfo.po.SmallExcellent">
+		select A.d_date as smallDate, COUNT(b.zixunshi_no) as samllCount from(
+		SELECT convert(date,DATEADD(D,number,#{beginData}),23) d_date
+		FROM [master].[dbo].[spt_values] aa
+		where type='p' and number&lt;=DATEDIFF(D,#{beginData},#{endData}))a
+		LEFT JOIN [DW].[dbo].[CSC_SmallQualityService] b on
+		a.d_date=CONVERT(DATE,b.createdon_time, 23)
+		and b.zixunshi_no=#{staffCode} group by A.d_date
+		ORDER BY A.d_date
+	</select>
+
+
+</mapper>
+
+

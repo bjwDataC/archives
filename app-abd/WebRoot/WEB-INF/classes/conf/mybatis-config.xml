@@ -15,6 +15,9 @@
 	<settings>
 	   <setting name="autoMappingBehavior" value="FULL"/>
 	</settings>
+	<typeAliases>
+		<package name="com.asiainfo.abdinfo.po"/>
+	</typeAliases>
 	<plugins>
 		<!-- com.github.pagehelper为PageHelper类所在包名 -->
 		<plugin interceptor="com.github.pagehelper.PageHelper">

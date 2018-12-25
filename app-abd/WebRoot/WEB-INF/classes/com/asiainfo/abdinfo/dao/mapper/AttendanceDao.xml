@@ -4,14 +4,22 @@
 	<!-- mybatis中最关键的标签：resultMap -->
 	<resultMap type="com.asiainfo.abdinfo.po.Person" id="atPerson">
 		<id property="staffCode" column="staffCode"/>
-		<collection property="attendance" ofType="com.asiainfo.abdinfo.po.Attendance" column="staffCode">
-		
+		<collection property="attendance" ofType="com.asiainfo.abdinfo.po.Attendance" column="staffCode">	
 		</collection>
 	</resultMap>
 	
+	<!-- 用来查询背景 -->
+	<resultMap type="com.asiainfo.abdinfo.po.Person" id="backPerson">
+	    <id property="staffCode" column="staffCode"/>
+	    <collection property="tyContent" ofType="com.asiainfo.abdinfo.po.typeContent" column="staffCode">
+	    
+	    </collection>	
+	</resultMap>
+	
+	<!-- 考勤 -->
 	<select id="selectAttendance" parameterType="java.util.Map" resultMap="atPerson">
-	SELECT  
-	    [年度] as attYear,
+	  SELECT  
+	  [年度] as attYear,
       [考勤期间] as arrMonth,
       [人员编码] as staffCode,
       [姓名] as staffName,
@@ -23,8 +31,46 @@
       order by 年度 desc,考勤期间 asc
 	</select>
 	
+	<select id="selectBackGround" parameterType="java.util.Map" resultMap="backPerson">
+	SELECT S.姓名  as staffName,
+	S.人员编码   as  staffCode, 
+	P.性别    as  gender,
+	P.出生日期   as  dataBirth,
+	P.籍贯省份   as  province,
+	U.学校    as  school,
+	P.学历  as record,
+	B.内容   as  content,
+	B.类型  as type, 
+	P.到职日期  as date, 
+	S.事业部   as  division,
+	S.部门  as department,
+	S.岗位   as  jobs,
+	S.职称   as  title,
+	P.QQ  as  QQ,
+	C.手机号码  as mobilePhone,
+	D.分机号码  as  extensionNum,
+	D.企业QQ  as  enterpriseQQ,
+	E.微信号   as WeChatID
+    from   PUBLICDATA.dbo.DS_STAFF S
+    left join HRM.dbo.[PMStaffRecord] p ON S.人员编码=P.人员编码
+    left JOIN HRM.dbo.PMGraduateUniversity U ON S.人员编码=U.人员编码
+    LEFT Join GSJCZDA.dbo.BasicInformation B ON S.人员编码=B.人员编码
+    left join HF.dbo.MobilePhoneNumberInformation c on S.人员编码=c.使用者人员编码 and c.类型 = '员工'
+    left join DW.DBO.PI_Contact D ON S.人员编码 = D.人员编码
+    left join HF.DBO.MobilePhoneNumberInformation E ON S.人员编码 = E.使用者人员编码
+    WHERE S.人员编码='15110204'
+	</select>
+	
+	<!-- 行政 -->
+	<select id="selectAdm" parameterType="java.util.Map">
+	  SELECT 年,月,类别,分数,人员编码,姓名 FROM RCXZ.dbo.[KQzj]
+      where 人员编码='12072001'
+	</select>
+	
 	
     
 	
 
 </mapper>
+
+

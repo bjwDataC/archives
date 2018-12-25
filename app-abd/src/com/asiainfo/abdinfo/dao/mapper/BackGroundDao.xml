@@ -1,0 +1,61 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asiainfo.abdinfo.dao.IBackGroundDao">
+
+	  
+	<!-- 用来查询背景 -->
+	<resultMap type="com.asiainfo.abdinfo.po.Person" id="backPerson">
+	    <id property="staffCode" column="staffCode"/>
+	    <collection property="tyContent" ofType="com.asiainfo.abdinfo.po.typeContent" column="staffCode">  
+	    </collection>	
+	</resultMap>
+	
+	
+	
+	<select id="selectBackGround" parameterType="java.util.Map" resultMap="backPerson">
+	SELECT S.姓名  as staffName,
+	S.人员编码   as  staffCode, 
+	P.性别    as  gender,
+	P.出生日期   as  dataBirth,
+	P.籍贯省份   as  province,
+	U.学校    as  school,
+	P.学历  as Record,
+	B.内容   as  content,
+	B.类型  as type, 
+	P.到职日期  as date, 
+	S.事业部   as  division,
+	S.部门  as department,
+	S.岗位   as  jobs,
+	S.职称   as  title,
+	P.QQ  as  QQ,
+	C.手机号码  as mobilePhone,
+	D.分机号码  as  extensionNum,
+	D.企业QQ  as  enterpriseQQ,
+	E.微信号   as WeChatID
+    from   PUBLICDATA.dbo.DS_STAFF S
+    left join HRM.dbo.[PMStaffRecord] p ON S.人员编码=P.人员编码
+    left JOIN HRM.dbo.PMGraduateUniversity U ON S.人员编码=U.人员编码
+    LEFT Join GSJCZDA.dbo.BasicInformation B ON S.人员编码=B.人员编码
+    left join HF.dbo.MobilePhoneNumberInformation c on S.人员编码=c.使用者人员编码 and c.类型 = '员工'
+    left join DW.DBO.PI_Contact D ON S.人员编码 = D.人员编码
+    left join HF.DBO.MobilePhoneNumberInformation E ON S.人员编码 = E.使用者人员编码
+    WHERE S.人员编码='15110204'
+	</select>
+	
+	<!-- 用来查询合同表 -->
+	<select id="selectContract" parameterType="java.util.Map" resultType="com.asiainfo.abdinfo.po.Contract">
+	   SELECT 姓名 as staffName,协议编号  as  contractNum,协议编号 as   staffCode,协议类型 
+        as  contractType,到职日期 as startingData,签订日期 as signingDate,到期日期 as dueDate,contractDead=null FROM
+		HRM.dbo.[PMAgreement]
+		WHERE 人员编码=#{staffCode}
+		UNION ALL
+		SELECT 姓名,合同编号,人员编码,合同类型,到职时间 到职日期,签订日期,到期日期,合同期限 FROM HRM.dbo.[PMLaborContract]
+		WHERE 人员编码=#{staffCode}
+		order by 签订日期 desc
+	</select>
+	
+	
+    
+	
+
+</mapper>

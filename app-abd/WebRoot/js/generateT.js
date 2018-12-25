@@ -25,9 +25,20 @@
         option.title.subtext="数据中心";
         option.tooltip.trigger='axis';
         option.legend.data=obj.data;
+ /*       dataZoom= {
+                show: true,
+                realtime: true,
+                y: 36,
+                height: 20,
+                start: 20,
+                end: 80
+            };
+        option.dataZoom=dataZoom;*/
         option.xAxis=[];
         option.series=[];
-        xAxisObj={};     
+        xAxisObj={};   
+        
+        
         toolbox={
             show : true,
             feature : {
@@ -40,7 +51,10 @@
         option.toolbox=toolbox;
         option.calculable="true";
         xAxisObj.type='category';
+        xAxisObj.boundaryGap ="true";
         xAxisObj.data=obj.xAxisData;
+
+        
         option.xAxis.push(xAxisObj);
         yAxis = [
             {
@@ -58,7 +72,7 @@
         for(var i=0;i<obj.seriesData.length;i++){
         	seriesObj={};
         	seriesObj.name=obj.data[i];
-        	seriesObj.type='bar';
+        	seriesObj.type='line';
         	seriesObj.data=obj.seriesData[i];
         	seriesObj.markPoint={};
         	seriesObj.markLine={};
@@ -66,6 +80,7 @@
         	seriesObj.markLine.data=lineData;
         option.series.push(seriesObj);
         }
+        console.log(option);
       return option;
     };
 	
