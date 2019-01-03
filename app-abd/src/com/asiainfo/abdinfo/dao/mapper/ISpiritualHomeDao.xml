@@ -6,12 +6,18 @@
 	<!--日总结 -->
 	<select id="findDaySummarize"  resultType="coachingRecord">
 		SELECT createtime as time,content FROM  XTXQ.dbo.Reading_reflection 
-		WHERE staffCode=#{staffCode} and types='今日感想' order by createtime desc
+		WHERE staffCode=#{staffCode} and types='今日感想' and CONVERT(VARCHAR,createtime,23) like #{date}+'%' order by createtime desc
 	</select>
     <!--月总结 -->
 	<select id="findMonthSummarize"  resultType="coachingRecord">
 		SELECT 日期 as time,类型 as type,内容 as content,(case when 经理回复 is null then '' else 经理回复 end) as managerReply 
-		FROM GSJCZDA.dbo.ManagerOfComprehensiveAssessment where 人员编码=#{staffCode} order by 日期 desc
+		FROM GSJCZDA.dbo.ManagerOfComprehensiveAssessment where 人员编码=#{staffCode} and 日期=#{date} order by 日期 desc
+	</select>
+	
+	<!--经理评价 -->
+	<select id="findManagerEvaluation"  resultType="coachingRecord">
+		SELECT 经理姓名 staffCode,内容 content,日期  time,类型 type  FROM GSJCZDA.dbo.[ManagerMonthlyEvaluation]
+		where  人员编码=#{staffCode} and CONVERT(VARCHAR,日期,23) like #{date}+'%' ORDER BY 日期 desc
 	</select>
 	
 

@@ -23,10 +23,8 @@ public class CoachingRecordController {
 	
 	@RequestMapping(value="/coachingRecord.do")
 	@ResponseBody
-	public JSONArray findCoachingRecord(HttpServletRequest request){
-		
-		String staffCode=request.getParameter("staffCode");
-		JSONArray jsonArray=coachingRecordService.findCoachingRecord(staffCode);
+	public JSONArray findCoachingRecord(String date,String staffCode){
+		JSONArray jsonArray=coachingRecordService.findCoachingRecord(staffCode,date);
 		return jsonArray;
 		
 	}

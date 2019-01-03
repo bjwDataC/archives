@@ -29,8 +29,8 @@ public class TeamController {
 	
 	@RequestMapping(value="/teamData.do")
 	@ResponseBody
-	public void findTeamData(String staffCode,HttpServletResponse response){
-		List<CoachingRecord> list=teamService.fingTeam(staffCode);
+	public void findTeamData(String staffCode,String date,HttpServletResponse response){
+		List<CoachingRecord> list=teamService.fingTeam(staffCode,date);
 		ResponseUtils.renderJson(response, JsonUtils.toJson(list));
 	}
 	

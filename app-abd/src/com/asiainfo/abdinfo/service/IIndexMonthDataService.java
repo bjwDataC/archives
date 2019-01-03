@@ -8,4 +8,5 @@ import com.asiainfo.abdinfo.po.IndexMonthData;
 public interface IIndexMonthDataService {
 	
 	public List<IndexMonthData> fiIndexMonthDatas(Map<String, Object> map);
+	public List<IndexMonthData> findHonor(String staffCode);
 }

@@ -19,23 +19,12 @@ public class IndexMonthDataServiceImpl implements IIndexMonthDataService{
 
 	@Override
 	public List<IndexMonthData> fiIndexMonthDatas(Map<String, Object> map) {
-		/*IndexMonthData rankingDK=indexMonthDataDao.rankingDK(map);
-		IndexMonthData rankingQY=indexMonthDataDao.rankingQY(map);
-		IndexMonthData rankingYX=indexMonthDataDao.rankingYX(map);
-		IndexMonthData rankingYC=indexMonthDataDao.rankingYC(map);
-		IndexMonthData rankingXX=indexMonthDataDao.rankingXX(map);
-		IndexMonthData rankingDH=indexMonthDataDao.rankingDH(map);
-		IndexMonthData rankingLF=indexMonthDataDao.rankingLF(map);
-		IndexMonthData rankingQYL=indexMonthDataDao.rankingQYL(map);*/
 		List<IndexMonthData> list=indexMonthDataDao.findMonthData(map);
-		/*list.add(rankingDK);
-		list.add(rankingQY);
-		list.add(rankingYX);
-		list.add(rankingYC);
-		list.add(rankingXX);
-		list.add(rankingDH);
-		list.add(rankingLF);
-		list.add(rankingQYL);*/
 		return list;
+	}
+
+	@Override
+	public List<IndexMonthData> findHonor(String staffCode) {
+		return indexMonthDataDao.findHonor(staffCode);
 	}
 }

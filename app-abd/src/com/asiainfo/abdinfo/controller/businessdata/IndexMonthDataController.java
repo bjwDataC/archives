@@ -56,4 +56,12 @@ public class IndexMonthDataController {
 		list.add(iIndexMonthDataService.fiIndexMonthDatas(map));
 		ResponseUtils.renderJson(response, JsonUtils.toJson(list));
 	}
+	
+	@RequestMapping(value="/honor.do")
+	@ResponseBody
+	public void findHonor(HttpServletRequest request,HttpServletResponse response){
+		String staffCode=request.getParameter("staffCode");
+		List<IndexMonthData> list=iIndexMonthDataService.findHonor(staffCode);
+		ResponseUtils.renderJson(response, JsonUtils.toJson(list));
+	}
 }

@@ -9,13 +9,13 @@ import com.asiainfo.abdinfo.po.Management;
 import com.asiainfo.abdinfo.po.Qualification;
 
 public interface ITeamDao {
-	List<CoachingRecord> fingTeam(@Param("staffCode")String staffCode);//团队参与
+	List<CoachingRecord> fingTeam(@Param("staffCode")String staffCode,@Param("date")String date);//团队参与
 	
-	List<CoachingRecord> fingCompanyKnowledge(@Param("staffCode")String staffCode);//公共课
+	List<CoachingRecord> fingCompanyKnowledge(@Param("staffCode")String staffCode,@Param("date")String date);//公共课
 	
 	List<CoachingRecord> fingInductionTraining(@Param("staffCode")String staffCode);//新员工培训
 
-	List<CoachingRecord> fingReadingFeeling(@Param("staffCode")String staffCode);//读书心得
+	List<CoachingRecord> fingReadingFeeling(@Param("staffCode")String staffCode,@Param("date")String date);//读书心得
 	
 	List<Management> fingManagementReservePool(@Param("staffCode")String staffCode);//查找管理干部储备池成绩
 	

@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Param;
 import com.asiainfo.abdinfo.po.CoachingRecord;
 
 public interface ICoachingRecordDao {
-	public List<CoachingRecord> findCoachingRecord(@Param("staffCode") String staffCode);
+	public List<CoachingRecord> findCoachingRecord(@Param("staffCode") String staffCode,@Param("date") String date);
 }

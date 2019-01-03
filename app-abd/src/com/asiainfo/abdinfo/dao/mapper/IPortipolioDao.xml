@@ -50,7 +50,6 @@
         left join [LRF].[dbo].[LRFlowers_new] l on num=month(发起日期)
 		and 人员编码=#{staffCode} and year(发起日期)=#{year}
 		group by num
-        
 	</select>
 	
 	<!--单项奖个数查询 -->

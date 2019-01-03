@@ -26,26 +26,6 @@
             
         		<section id="main-content">
                 <div class="row">
-                    <div class="col-lg-8 p-r-0 title-margin-right">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <h1>Hello, <span>Welcome Here</span></h1>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /# column -->
-                    <div class="col-lg-4 p-l-0 title-margin-left">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="#">Dashboard</a></li>
-                                    <li class="active">Home</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-lg-12">
                         <div class="card alert">
                             <div class="button-list">
@@ -55,14 +35,51 @@
                                 <button type="button" class="btn btn-info m-b-10 m-l-5" onclick="getJson(this)" id="3">优质服务积分</button>
                                 <button type="button" class="btn btn-warning m-b-10 m-l-5" onclick="getJson(this)" id="4">优质服务奖金</button>
                                 <button type="button" class="btn btn-danger m-b-10 m-l-5" onclick="getJson(this)" id="5">小优个数</button>
+                                <button type="button" class="btn btn-pink m-b-10 m-l-5" onclick="milestone(this)" id="6">里程碑</button>
+                                
+                                <div class="card-header-right-icon" >
+                                    <ul hidden>
+                                        <li id="4">
+                                        	<button type="button" class="btn btn-default m-b-10" style="height:30px;line-height:10px;" onclick="milestone(this)">搜索</button>
+                                        </li>
+                                        <li id="months" style="border:1px solid #e7e7e7;z-index:9999 !Important;min-height:30px;min-width:98px;margin:0;padding:0;position:absolute;right:100px;overflow:hidden;" onmouseleave="monthlist()" onmouseover="listmonth()">
+                                        	<span style="display:inline-block;padding-left:15px;margin-right:15px;"></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-angle-down" style="line-height:30px;"></i>
+                                        	<div id="listmonth" hidden>
+			                                       <a href="#" class="list-group-item" onclick="getMonth(this)">01</a>
+			                                       <a href="#" class="list-group-item" onclick="getMonth(this)">02</a>
+			                                       <a href="#" class="list-group-item" onclick="getMonth(this)">03</a>
+			                                       <a href="#" class="list-group-item" onclick="getMonth(this)">04</a>
+			                                       <a href="#" class="list-group-item" onclick="getMonth(this)">05</a>
+			                                       <a href="#" class="list-group-item" onclick="getMonth(this)">06</a>
+			                                       <a href="#" class="list-group-item" onclick="getMonth(this)">07</a>
+			                                       <a href="#" class="list-group-item" onclick="getMonth(this)">08</a>
+			                                       <a href="#" class="list-group-item" onclick="getMonth(this)">09</a>
+			                                       <a href="#" class="list-group-item" onclick="getMonth(this)">10</a>
+			                                       <a href="#" class="list-group-item" onclick="getMonth(this)">11</a>
+			                                       <a href="#" class="list-group-item" onclick="getMonth(this)">12</a>
+				                        	</div>
+                                        </li>
+                                        <li id="years" style="border:1px solid #e7e7e7;z-index:9999 !Important;min-height:30px;min-width:98px;margin:0;padding:0;position:absolute;right:200px;overflow:hidden;" onmouseleave="yearlist()"  onmouseover="listyear()">
+                                        	<span style="display:inline-block;padding-left:15px;"></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-angle-down" style="line-height:30px;"></i>
+                                        	<div id="listyear" hidden>
+                                     
+                       						</div>
+                                        </li>
+                                        
+                                    </ul>
+                                    
+                        
+                                </div>
                             </div>
+                            
                         </div>
+                        
                         <!-- /# card -->
                     </div>
                 </div>
                 <!-- /# row -->
 
-                <div class="main-content">
+                <div class="main-content" id="achievement">
                     <div class="row">
                         <div class="col-lg-12">
                         	<div class="card alert">
@@ -72,16 +89,16 @@
                     </div>
                 </div>
                 
-                <div class="main-content">
+                <div class="main-content" id="milestone" hidden>
                     <div class="row">
                         <div class="col-lg-12">
                         	<div class="card alert">
 	                            <section class="blog-single">
 							        <div class="container">
-							            <div style='text-align:center;margin-left:15px;'><button type="button" class="btn btn-warning m-b-10 m-l-5" style='font-size:25px;letter-spacing:20px;padding-left:30px;' onclick="getJson(this)" id="0">里程碑</button></div>
+							            <div style='text-align:center;margin-left:15px;'><button type="button" class="btn btn-warning m-b-10 m-l-5" style='font-size:25px;margin-right:30px;letter-spacing:20px;padding-left:30px;'  id="0">里程碑</button></div>
 							            <div class="education-main">
 							                <div class="container">
-							                   <div class="row">
+							                   <div class="row" style="margin-right:30px;">
 							                       <div class="col-md-6  left-grid">
 							                            <ul class="left-items">
 							                        		<li>
@@ -125,6 +142,7 @@
 							                       </div>
 							                   </div>
 							                </div>
+					                       	<div class="null" style='text-align:center;font-size:30px ;'>无数据</div>
 							            </div>
 							        </div>
 						    	</section>										
@@ -151,38 +169,6 @@
     <script type="text/javascript" src="${basePath}/js/portipolio.js"></script>
     <%@include file="incloudeJS.jsp"%>
     <script>
-    
-    //里程碑
-    $.ajax({
-		  url: "education.do?staffCode=18060404",
-		  type: "GET",
-		  dataType:"json",
-		  success: function(result){
-  			console.log(result);
-  			$(".left-items").html("");
-     	    $(".right-items").html("");
-     	    var s;
-            var list=result.list;
-            var color=["#1de9b6","#03a9f5","#dd4b39","#f39c12"]
-           	for(var i=0;i<list.length;i++){
-          		s="<li>"+
-          			"<div style='border:5px solid #eef1f6;background-color:	#F5F5F5'>"+
-	                   	"<h3>"+list[i].incident+"</h3>"
-	                   	+"<div style='font-family:楷体;font-size:18px;'>"+list[i].inspiration+"</div>"
-	                   	+"<h4>"+list[i].time+"</h4>"
-                   	+"</div>"
-                   	+"<span>"+"</span>"
-               	+"</li>";
-               	
-       			if(i%2==0){
-       				$(".left-items").append(s);
-               	}else{
-               		$(".right-items").append(s);
-               	};
-        		}; 
-		  }
-	});
-    	
     	$(".lm").mouseover(function(){
     		$(".lm").hide();
     	});
@@ -208,10 +194,58 @@
 	    	
 		});
     	
+    	function milestone(e){
+    		$("#milestone").show()
+    		$(".card-header-right-icon ul").show()
+    		$("#achievement").hide();
+    		var year=$("#years span").html();
+    		var month=$("#months span").html();
+    		var time=year+"-"+month
+    		//里程碑
+    	    $.ajax({
+    			  url: "education.do?staffCode=18060404&date="+time,
+    			  type: "GET",
+    			  dataType:"json",
+    			  success: function(result){
+    	  			console.log(result);
+    	  			console.log("++");
+    	  			$(".left-items").html("");
+    	     	    $(".right-items").html("");
+    	     	    var s;
+    	            var list=result.list;
+    	            if(list.length==0){
+    	            	$(".education-main .container").hide();
+    	            	$(".null").show()
+    	            }else{
+    	            	$(".education-main .container").show();
+    	            	$(".null").hide()
+    	            }
+    	            var color=["#1de9b6","#03a9f5","#dd4b39","#f39c12"]
+    	           	for(var i=0;i<list.length;i++){
+    	          		s="<li>"+
+    	          			"<div style='border:5px solid #eef1f6;background-color:	#F5F5F5'>"+
+    		                   	"<h3>"+list[i].incident+"</h3>"
+    		                   	+"<div style='font-family:楷体;font-size:18px;'>"+list[i].inspiration+"</div>"
+    		                   	+"<h4>"+list[i].time+"</h4>"
+    	                   	+"</div>"
+    	                   	+"<span>"+"</span>"
+    	               	+"</li>";
+    	               	
+    	       			if(i%2==0){
+    	       				$(".left-items").append(s);
+    	               	}else{
+    	               		$(".right-items").append(s);
+    	               	};
+    	        		}; 
+    			  }
+    		});
+    	}
     	//小红花等信息的点击事件
     	function getJson(e){
+    		$("#milestone").hide()
+    		$("#achievement").show();
+    		$(".card-header-right-icon ul").hide()
     		var type=$(e).attr("id");
-    		//console.log(type)
     		$.ajax({
 	    		  url: "portipolioJson.do?staffCode=18060404&type="+type,
 	    		  type: "GET",
@@ -273,6 +307,58 @@
     	}
     	
     	
+    	
+    	/* function getMilestone(){
+    		
+    	} */
+    	
+    	
+    	
+    	
+    	$(document).ready(function () {
+    		var myDate = new Date();
+	    	var year=myDate.getFullYear();
+	    	for(var i=0;i<10;i++){
+	    		$("#listyear").append("<a href='#' style='border-radius:0;border-left:0;border-right:0;' class='list-group-item' onclick='getYear(this)'>"+year+"</a>")
+	    		year--;
+	    	}
+	    	var month=myDate.getMonth()+1
+	    	if(month<10){
+	    		month="0"+month
+	    	}
+	    	$("#months span").html(month);
+	    	$("#years span").html(myDate.getFullYear())
+	    });
+	    
+    	/* function updateTime(){
+    		var myDate = new Date();
+	    	$("#months span").html(myDate.getMonth()+1);
+	    	$("#years span").html(myDate.getFullYear())
+    	} */
+    	
+	    function getMonth(e){
+	    	$("#listmonth").hide();
+	    	$("#months span").html($(e).html());
+	    }
+	    function getYear(e){
+	    	$("#listyear").hide();
+	    	$("#years span").html($(e).html());
+	    }
+	    
+	    //年月列表的点击事件
+	    function listmonth(){
+	    	$("#listmonth").show();
+	    }
+	    function listyear(){
+	    	$("#listyear").show();
+	    }
+	    //控制年月列表的显示与隐藏
+	    function monthlist(){
+	    	$("#listmonth").hide();
+	    }
+	    function yearlist(){
+	    	$("#listyear").hide();
+	    }
     </script>
     
 

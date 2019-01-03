@@ -10,13 +10,8 @@
 </head>
 <body class="sidebar-hide">
 
-      <%@ include file="left.jsp" %>
-
-
-       <%@ include file="top.jsp" %>
-   
-
-    
+    <%@ include file="left.jsp" %>
+    <%@ include file="top.jsp" %>
     <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
@@ -329,40 +324,16 @@
                                         <div class="card-body">
                                             <div class="media-stats-content text-center">
                                                 <div class="row">
-                                                    <div class="col-lg-4 border-bottom">
+                                                    <div class="col-lg-4 border-left">
                                                         <div class="stats-content">
-                                                            <div class="stats-digit">5482</div>
-                                                            <div class="stats-text">Followers</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 border-bottom">
-                                                        <div class="stats-content">
-                                                            <div class="stats-digit">8320</div>
-                                                            <div class="stats-text">New Followers</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 border-bottom">
-                                                        <div class="stats-content">
-                                                            <div class="stats-digit">4712</div>
-                                                            <div class="stats-text">New Tweets</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="stats-content">
-                                                            <div class="stats-digit">3652</div>
-                                                            <div class="stats-text">Retweets</div>
+                                                            <div class="stats-digit">0</div>
+                                                            <div class="stats-text">奋斗者</div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 border-left">
                                                         <div class="stats-content">
-                                                            <div class="stats-digit">9874</div>
-                                                            <div class="stats-text">Mentions</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 border-left">
-                                                        <div class="stats-content">
-                                                            <div class="stats-digit">1254</div>
-                                                            <div class="stats-text">Favorites</div>
+                                                            <div class="stats-digit">0</div>
+                                                            <div class="stats-text">杰出教育工作者</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -387,6 +358,8 @@
 		                                <div class="card-header">
 		                                    <h3 style="font-weight:bold;letter-spacing:15px;margin-top:10px;margin-bottom:30px;text-align:center;">辅导记录</h3>
 		                                    
+		                                </div>
+		                                <div class="recent-comment m-t-15">
 		                                </div>
 		                            </div>
 		                            <!-- /# card -->
@@ -428,7 +401,7 @@
     		//里程碑
 	        $.ajax({
 	           	type : 'get',  //传输类型
-	           	url : 'education.do?staffCode=18032605',
+	           	url : 'education.do?staffCode=11072201&date=2018-11',
 	           	dataType : 'json', //返回数据形式为json
 	           	success : function(result) {
 	               	console.log(result)
@@ -463,13 +436,16 @@
     		//辅导记录
     		$.ajax({
 	           	type : 'get',  //传输类型
-	           	url : 'coachingRecord.do?staffCode=18032605',
+	           	url : 'coachingRecord.do?staffCode=11072201&date=2018-11',
 	           	dataType : 'json', //返回数据形式为json
 	           	success : function(result) {
+	           		console.log(result)
+	           		console.log("辅导记录")
 	               	if(result.length==0){
 	               		$(".recent-comment").append("<div style='height:200px;text-align:center;line-height:200px;font-size:30px;'>暂无数据</div>")
 	               	}
 	                for(var i=0;i<result.length;i++){
+	                	console.log("辅导记录")
 						/* if(result[i].type=="心得感悟"){ */
 							var color='#'+Math.floor(Math.random()*0xffffff).toString(16);
 		                	var li="<div class='media'>"+
@@ -508,7 +484,7 @@
     		//多维度月数据部分内容
     		$.ajax({
 	           	type : 'get',  //传输类型
-	           	url : 'monthData.do?staffCode=18032605&date=2018-11-01',
+	           	url : 'monthData.do?staffCode=17102707&date=2018-11-01',
 	           	dataType : 'json', //返回数据形式为json
 	           	success : function(result) {
 	               	console.log(result)
@@ -554,6 +530,36 @@
 	               	} 
 	           	} 
 			});
+    		
+    		
+    		//荣誉墙
+    		$.ajax({
+	           	type : 'get',  //传输类型
+	           	url : 'honor.do?staffCode=11072201',
+	           	dataType : 'json', //返回数据形式为json
+	           	success : function(result) {
+	               	console.log(result)
+	               	console.log("荣誉墙")
+	               	var classStr="border-bottom"
+	               	for(var i=0;i<result.length;i++){
+	               		if(i==0){
+	               			classStr=""
+	               		}else{
+	               			classStr="border-bottom"
+	               		}
+	               		var div="<div class='col-lg-4 "+classStr+"'>"+
+			               		"<div class='stats-content'>"+
+			               		"<div class='stats-digit'>"+result[i].ranking+"</div><div class='stats-text'>"+result[i].sta_type+"</div>"+
+			               		"</div>"+
+			               		"</div>";
+			            $(".media-stats-content .row").prepend(div);
+	               	}
+	           	} 
+			});
+    		
+    		
+    		
+    		
 	    });
     	
     

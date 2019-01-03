@@ -10,14 +10,26 @@
 	
     <!-- 月数据多维度 -->
 	<select id="findMonthData"  resultType="IndexMonthData">
-		select m.row_num as ranking,h.sta_type,m.type_count from (SELECT sta_type from GSJCZDA.dbo.constantTable_whc) h 
-		LEFT JOIN (select row_num,sta_type,name_no,type_count from (select ROW_NUMBER() OVER(PARTITION BY d.事业部,sta_type order by type_count desc) as 
+		select a.row_num as ranking,h.sta_type,a.type_count from (SELECT sta_type from GSJCZDA.dbo.constantTable_whc) h 
+		LEFT JOIN  
+		
+		(select ROW_NUMBER() OVER(PARTITION BY d.事业部,sta_type order by type_count desc) as 
 		row_num ,z.sta_type ,z.name_no ,z.type_count from [ZXS_CZDA].[dbo].[ZXS_Multidimensional_analysis_month]z 
-		INNER JOIN PUBLICDATA.dbo.DS_STAFF d ON z.name_no=d.人员编码 where  z.type_month=#{date} and d.事业部=(select 事业部 from PUBLICDATA.dbo.DS_STAFF where 人员编码=#{staffCode})) a 
-		where a.name_no=#{staffCode} and sta_type in ('到款金额','签约金额','有效数据','远程数据','信息转换率','电话邀约率','来访数据','签约率')) m 
-		ON h.sta_type=m.sta_type;
+		INNER JOIN PUBLICDATA.dbo.DS_STAFF d ON z.name_no=d.人员编码 where  z.type_month=#{date} and d.事业部=
+		(select 事业部 from PUBLICDATA.dbo.DS_STAFF where 人员编码=#{staffCode})) a ON h.sta_type=a.sta_type
+		where a.name_no=#{staffCode} and a.sta_type in ('到款金额','签约金额','有效数据','远程数据','信息转换率','电话邀约率','来访数据','签约率')
 	</select>
 	
+	<select id="findHonor"  resultType="IndexMonthData">
+	
+		SELECT count(*) ranking,'小红花数量' as sta_type from [LRF].[dbo].[LRFlowers_new] where 人员编码=#{staffCode}
+		union all
+		SELECT count(*) ranking,'单项奖数量' FROM HRM.dbo.[SGMSingleprize] where 人员编码=#{staffCode}
+		union all
+		select count(*) ranking,'优质服务数量' from 	Quality_service.dbo.[HSScore] where 人员编码=#{staffCode}
+		union all
+		select count(*) ranking,'小优数量' from DW.dbo.CSC_SmallQualityService where zixunshi_no=#{staffCode}
+	</select>
 	
 	<!-- 以下是排名情况 -->
 	<!-- <select id="rankingDK"  resultType="IndexMonthData">

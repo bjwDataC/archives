@@ -65,7 +65,7 @@
     <script>
     $.ajax({
        	type : 'get',  //传输类型
-       	url : 'coachingRecord.do?staffCode=11011201',
+       	url : 'coachingRecord.do?staffCode=11011201&date=2018',
        	dataType : 'json', //返回数据形式为json
        	success : function(result) {
            	console.log(result)

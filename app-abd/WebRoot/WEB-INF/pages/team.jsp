@@ -111,7 +111,7 @@
     <script>
     $.ajax({
        	type : 'get',  //传输类型
-       	url : 'teamData.do?staffCode=11011201',
+       	url : 'teamData.do?staffCode=11011201&date=2018',
        	dataType : 'json', //返回数据形式为json
        	success : function(result) {
            	console.log(result)
@@ -123,7 +123,7 @@
 				                "</div>"+
 				                "<div class='stat-content'>"+
 				                   " <div class='stat-digit'>类型:"+result[i].type+"</div>"+
-				                    "<div class='stat-text' style='padding:0 20px;;'>内容:"+result[i].content+"</div>"+
+				                    "<div class='stat-text' style='padding:0 20px;;'>内容:"+result[i].content+"<span style='display:inline-block;float:right;'>时间："+result[i].time+"</span></div>"+
 				                "</div>"+
 				            "</div>"+
 				        "</div>"

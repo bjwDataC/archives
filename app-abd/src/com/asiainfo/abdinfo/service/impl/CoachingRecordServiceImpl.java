@@ -19,8 +19,8 @@ public class CoachingRecordServiceImpl implements ICoachingRecordService{
 	private ICoachingRecordDao coachingRecord;
 	
 	@Override
-	public JSONArray findCoachingRecord(String staffCode) {
-		List<CoachingRecord> coachingRecords=coachingRecord.findCoachingRecord(staffCode);
+	public JSONArray findCoachingRecord(String staffCode,String date) {
+		List<CoachingRecord> coachingRecords=coachingRecord.findCoachingRecord(staffCode,date);
 		JSONArray jsonArray=(JSONArray)JSON.toJSON(coachingRecords);
 		return jsonArray;
 	}

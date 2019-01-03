@@ -14,11 +14,11 @@
     <!--里程碑事件 -->
 	<select id="findEducation" parameterType="java.util.Map" resultMap="education">	
 		select 人员编码, 日期,姓名,事件,个人感悟  from GSJCZDA.dbo.[MilestoneEvents] 
-		where 人员编码=#{staffCode} 
-		<if test="time!=null and time!=''">
-			<bind name="times" value="'%'+time+'%'"></bind>
+		where 人员编码=#{staffCode} and 日期 like #{date}+'%'
+		<!-- <if test="date!=null and date!=''">
+			<bind name="times" value="date+'%'"></bind>
 			and 日期 like #{times}
-		</if>
+		</if> -->
 		order by 日期   desc
 	</select>
 	

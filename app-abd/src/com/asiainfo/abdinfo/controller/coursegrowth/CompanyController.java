@@ -1,9 +1,12 @@
 package com.asiainfo.abdinfo.controller.coursegrowth;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
@@ -28,13 +31,19 @@ public class CompanyController {
 	//公司知识
 	@RequestMapping(value="/companyData.do")
 	@ResponseBody
-	public void getCompanyData(String staffCode,String stutas,HttpServletResponse response){
+	public void getCompanyData(String staffCode,String stutas,String date,HttpServletResponse response){
 		Map<String, Object> map=new HashMap<String, Object>();
-		map=teamService.findCompany(staffCode);
+		if (stutas.equals("1")) {
+			map=teamService.findCompany(staffCode,date);//公司知识
+		}else if(stutas.equals("2")){
+			map=teamService.findManagement(staffCode);//管理知识
+		}else {
+			map=teamService.fingReadingFeeling(staffCode,date);//读书心得
+		}
 		ResponseUtils.renderJson(response, JsonUtils.toJson(map));
 	}
 	
-	//管理知识
+	/*//管理知识
 	@RequestMapping(value="/management.do")
 	@ResponseBody
 	public void getManagement(String staffCode,String stutas,HttpServletResponse response){
@@ -50,5 +59,5 @@ public class CompanyController {
 		Map<String, Object> map=new HashMap<String, Object>();
 		map=teamService.findCompany(staffCode);
 		ResponseUtils.renderJson(response, JsonUtils.toJson(map));
-	}
+	}*/
 }

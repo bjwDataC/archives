@@ -15,7 +15,7 @@
 	<select id="findCoachingRecord"  resultMap="coachingRecord">
 		
 		select 人员编码,日期,内容,类型,(case when 经理回复 is null then '' else 经理回复 end) as 经理回复  
-		from gsjczda.dbo.ManagerOfComprehensiveAssessment where 人员编码=#{staffCode} order by 日期 desc
+		from gsjczda.dbo.ManagerOfComprehensiveAssessment where 人员编码=#{staffCode} and CONVERT(VARCHAR,日期,23) like #{date}+'%' order by 日期 desc
 	</select>
 	
 
