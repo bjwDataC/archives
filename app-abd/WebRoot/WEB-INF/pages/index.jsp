@@ -461,22 +461,7 @@
 					                    "</div>"+
 			                		"</div>";
 		                	$(".recent-comment").append(li)
-						/* }else{
-							var color='#'+Math.floor(Math.random()*0xffffff).toString(16);
-		                	var li="<div class='media'>"+
-			                        "<div class='media-left'>"+
-			                        "<a href='#'>"+
-			                        	"<img class='media-object' src='${basePath}/images/avatar/6.jpg' alt='...'>"+
-			                        "</a>"+
-			                    "</div>"+
-			                    "<div class='media-body'>"+
-			                        "<h4 class='media-heading color-primar'>"+"<text style='color:"+color+";font-weight:bold;'>"+result[i].type+"</text>"+"："+result[i].content+"</h4>"+
-			                        "<p>"+"<text style='font-weight:bold;font-size:18px;'>经理回复：</text>"+result[i].managerReply+"</p>"+
-			                        "<p class='comment-dat'>"+result[i].time+"</p>"+
-			                    "</div>"+
-			                "</div>";
-		                	$(".recent-comment").append(li)
-						} */
+						
 	                	
 	                }
 	           	} 

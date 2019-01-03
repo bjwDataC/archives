@@ -27,10 +27,10 @@
                         </ul>
                     </li>
 
-                    <li><a class="sidebar-sub-toggle"><i class="ti-cup"></i> 经营数据<span class="badge badge-primary">7</span> <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-cup"></i> 经营数据<span class="badge badge-primary">3</span> <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="${basePath}/baseData.do">日数据</a></li>       
-                            <li><a href="#">月数据</a></li>
+                            <li><a href="${basePath}/monthDate.do">月数据</a></li>
                             <li><a href="#">阿米巴</a></li>
                         </ul>
                     </li>
