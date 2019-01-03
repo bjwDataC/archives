@@ -35,4 +35,18 @@ public class IndexController {
 	public ModelAndView baseData(HttpServletRequest request,HttpServletResponse response){
 		return new ModelAndView("/basisData/basisData");
 	}
+	
+	
+	@RequestMapping(value="/monthDate.do")
+	@ResponseBody
+	public ModelAndView monthDate(HttpServletRequest request,HttpServletResponse response){
+		return new ModelAndView("/basisData/monthDate");
+	}
+	
+	
+
 }
+
+
+
+

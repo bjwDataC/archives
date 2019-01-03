@@ -7,6 +7,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.asiainfo.abdinfo.po.Contract;
 import com.asiainfo.abdinfo.po.DayDate;
 import com.asiainfo.abdinfo.po.DayInfo;
+import com.asiainfo.abdinfo.po.MonthDate;
 import com.asiainfo.abdinfo.po.Person;
 import com.asiainfo.abdinfo.po.SmallExcellent;
 
@@ -21,7 +22,7 @@ public interface IBackGroundService {
 	 * @param map
 	 * @return
 	 */
-	JSONObject getInfo(Map map);
+	JSONObject  getInfo(Map map);
 	
 	
 	/**
@@ -29,5 +30,29 @@ public interface IBackGroundService {
 	 * @param map
 	 * @return
 	 */
-	public List<SmallExcellent> getSmallExcellent(Map map);
+	public JSONObject getSmallExcellent(Map map);
+	
+	
+	/**
+	 * 月数据
+	 * @param map
+	 * @return
+	 */
+	List<MonthDate> getMonth(Map map);
+	
+	
+	/**
+	 * 月数据查询类型
+	 * @param map
+	 * @return
+	 */
+	List<String> getType(Map map);
 }
+
+
+
+
+
+
+
+

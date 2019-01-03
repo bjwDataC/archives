@@ -13,6 +13,7 @@ import com.asiainfo.abdinfo.dao.IDayDataDao;
 import com.asiainfo.abdinfo.po.Contract;
 import com.asiainfo.abdinfo.po.DayDate;
 import com.asiainfo.abdinfo.po.DayInfo;
+import com.asiainfo.abdinfo.po.MonthDate;
 import com.asiainfo.abdinfo.po.Person;
 import com.asiainfo.abdinfo.po.SmallExcellent;
 import com.asiainfo.abdinfo.service.IBackGroundService;
@@ -38,68 +39,74 @@ public class IBackGroundServiceImpl implements IBackGroundService{
 	 * 用来查询日数据的信息模块
 	 */
 	@Override
-	public JSONObject getInfo(Map map) {
+	public JSONObject  getInfo(Map map) {
 		List<DayInfo> t=iDayDataDao.selectInfo(map);
-		
-		JSONObject all=new JSONObject();
-		//----黄条
-		JSONObject huangtiao=new JSONObject();
-		List<String> huangtiaoDataList=new ArrayList<String>();
-		List<String> huangTiaoCountList=new ArrayList<String>();
-		
-		JSONObject fail=new JSONObject();
-		List<String> failDateList=new ArrayList<String>();
-		List<String> failCountList=new ArrayList<String>();
-		
-		JSONObject effective=new JSONObject();
-		List<String> effectiveDate=new ArrayList<String>();
-		List<String> effectiveCount=new ArrayList<String>();
-		
-		JSONObject info=new JSONObject();
-		List<String> infoDate=new ArrayList<String>();
-		List<String> infoCount=new ArrayList<String>();
-		
-		for(int i=0;i<t.size();i++){
-			if(t.get(i).getHuangTiaoDate()!=null){
-				huangtiaoDataList.add(t.get(i).getHuangTiaoDate());
-				huangTiaoCountList.add(t.get(i).getHuangTiaoCount());
-			}
-			
-			if(t.get(i).getFailDate()!=null){
-				failDateList.add(t.get(i).getFailDate());
-				failCountList.add(t.get(i).getFailCount());
-			}
-			
-			if(t.get(i).getEffectiveDate()!=null){
-				effectiveDate.add(t.get(i).getEffectiveDate());
-				effectiveCount.add(t.get(i).getEffectiveCount());
-			}
-		    
-			if(t.get(i).getInfoDate()!=null){
-				infoDate.add(t.get(i).getInfoDate());
-				infoCount.add(t.get(i).getInfoCount());
-			}		
-		}
-		huangtiao.put("huangtiaoDate", huangtiaoDataList);
-		huangtiao.put("huangtiaoCount", huangTiaoCountList);
-		fail.put("failDateList", failDateList);
-		fail.put("failCountList", failCountList);
-		effective.put("effectiveDate", effectiveDate);
-		effective.put("effectiveCount", effectiveCount);
-		info.put("infoDate", infoDate);
-		info.put("infoCount", infoCount);
-		all.put("huangtiaos", huangtiao);
-		all.put("fails", fail);
-		all.put("effectives", effective);
-		all.put("infoa", info);
-		return all;
+		JSONObject json=new JSONObject();
+		List<String> dateList=new ArrayList<String>();  //时间
+		List<List<String>> allList=new ArrayList<List<String>>();  //总共
+		List<String> huangTiao=new ArrayList<String>();  //黄条
+		List<String> effective=new ArrayList<String>();  //有效
+		List<String> fail=new ArrayList<String>();  //失败
+		List<String> info=new ArrayList<String>();  //新增信息
+		String [] strName={"黄条","有效","失败","新增信息"};
+		 for(int i=0;i<t.size();i++){
+			 t.get(i).getInfoCount();
+			 info.add(t.get(i).getInfoCount());
+			 dateList.add(t.get(i).getDateRefence());
+			 huangTiao.add(t.get(i).getHuangTiaoCount());
+			 effective.add(t.get(i).getEffectiveCount());
+			 fail.add(t.get(i).getFailCount());
+		 }
+		 allList.add(huangTiao);
+		 allList.add(effective);
+		 allList.add(fail);
+		 allList.add(info);
+		 
+		 json.put("dateList", dateList);
+		 json.put("allList", allList);
+		 json.put("strName", strName);
+		return json;
 	}
 	
 	
+	/**
+	 * 用来查询日数据的小优
+	 */
 	@Override
-	public List<SmallExcellent> getSmallExcellent(Map map) {
+	public JSONObject getSmallExcellent(Map map) {
+		List<SmallExcellent> smE=iDayDataDao.smallExcellent(map);
+		JSONObject json=new JSONObject();
+		List<String> dateList=new ArrayList<String>();  //时间
+		List<List<String>> allList=new ArrayList<List<String>>();  //总共
+		List<String> smallExcellent=new ArrayList<String>();  //小优
+		String [] strName={"小优"};
+		for(int i=0;i<smE.size();i++){
+			dateList.add(smE.get(i).getSmallDate());
+			smallExcellent.add(smE.get(i).getSamllCount());
+		}
+		allList.add(smallExcellent);
+		json.put("dateList", dateList);
+		json.put("allList", allList);
+		json.put("strName", strName);
+		return json;
+	}
+	
+	
+	/**
+	 * 月数据
+	 */
+	@Override
+	public List<MonthDate> getMonth(Map map) {
+		 return iDayDataDao.selectMonth(map);
 		
-		return iDayDataDao.smallExcellent(map);
+	}
+	
+	/**
+	 * 月数据查询类型
+	 */
+	@Override
+	public List<String> getType(Map map) {
+		return iDayDataDao.selectType(map);
 	}
 	
 	

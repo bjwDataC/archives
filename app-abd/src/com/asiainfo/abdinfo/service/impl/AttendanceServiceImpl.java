@@ -1,5 +1,6 @@
 package com.asiainfo.abdinfo.service.impl;
 
+import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,6 +8,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.asiainfo.abdinfo.dao.AttendanceDao;
 import com.asiainfo.abdinfo.po.Person;
+import com.asiainfo.abdinfo.po.UserUser;
 import com.asiainfo.abdinfo.service.AttendanceService;
 
 
@@ -62,6 +64,15 @@ public class AttendanceServiceImpl implements AttendanceService{
 	@Override
 	public Person getBackGround(Map map) {		
 		return attendanceDao.selectAttendance(map);
+	}
+
+
+	@Override
+	public UserUser getNamePwd(String userID,String pwd) {
+		Map<String,String> map=new HashMap<String,String>();
+		map.put("staffCode", userID);
+		map.put("staffPwd", pwd);
+		return attendanceDao.selectNamePwd(map);
 	}
 
 }

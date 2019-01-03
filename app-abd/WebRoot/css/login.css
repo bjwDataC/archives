@@ -1,68 +1,421 @@
-/*    Font Variable
-----------------------*/
-/*    Color Variable
------------------------*/
-/*    Solid Color
-------------------*/
-/*    Brand color
-----------------------*/
-.login-logo {
-  text-align: center;
-  margin-bottom: 15px;
+a,
+address,
+b,
+big,
+blockquote,
+body,
+center,
+cite,
+code,
+dd,
+del,
+div,
+dl,
+dt,
+em,
+fieldset,
+font,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+html,
+i,
+iframe,
+img,
+ins,
+label,
+legend,
+li,
+ol,
+p,
+pre,
+small,
+span,
+strong,
+u,
+ul,
+var,
+button,
+input,
+textarea {
+	margin: 0;
+	padding: 0;
 }
-.login-logo span {
-  color: #ffffff;
-  font-size: 24px;
+fieldset,
+img,
+input,
+button {
+	border: none;
+	outline-style: none;
 }
-.login-logo img {
-  height: 75px;
+ul,
+ol {
+	list-style: none;
 }
-.login-content {
-  margin: 100px 0;
+input {
+	font-family: "microsaft yahei";
+	font-size: 14px;
 }
-.login-form {
-  background: #ffffff;
-  padding: 30px 30px 20px;
-  border-radius: 2px;
+select,
+input {
+	vertical-align: middle;
 }
-.login-form h4 {
-  color: #252525;
-  text-align: center;
-  margin-bottom: 50px;
+select,
+input,
+textarea {
+	font-size: 14px;
 }
-.login-form .checkbox {
-  color: #252525;
+
+/*--锟斤拷止锟较讹拷--*/
+
+textarea {
+	resize: none;
 }
-.login-form .checkbox label {
-  text-transform: none;
+
+/*--去锟斤拷图片锟酵诧拷默锟较碉拷3锟斤拷锟截空白凤拷隙--*/
+
+img {
+	border: 0;
+	vertical-align: middle;
 }
-.login-form .btn {
-  width: 100%;
-  text-transform: uppercase;
-  font-size: 14px;
-  padding: 15px;
-  border: 0px;
+table {
+	border-collapse: collapse;
 }
-.login-form label {
-  color: #252525;
-  text-transform: uppercase;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 100%;
 }
-.login-form label a {
-  color: #03a9f5;
+s,
+i,
+em {
+	font-style: normal;
+	text-decoration: none;
 }
-.social-login-content {
-  margin: 0px -30px;
-  border-top: 1px solid #e7e7e7;
-  border-bottom: 1px solid #e7e7e7;
-  padding: 30px 0px;
-  background: #fcfcfc;
+a {
+	text-decoration: none;
+	color: inherit;
 }
-.social-button {
-  padding: 0 30px;
+
+html {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
 }
-.social-button i {
-  padding: 19px;
+body {
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	font: 13px "Microsoft Yahei"; 
 }
-.register-link a {
-  color: #03a9f5;
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
 }
+
+/*--锟斤拷锟�--*/
+
+.clearfix {
+	*+height: 1%;
+}
+.clearfix:after {
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.form-group > div:before,
+.form-group > div:after {
+	display: table;
+	content: " ";
+}
+
+.form-group > div:after {
+	clear: both;
+}
+
+.header {
+	width: 100%;
+	height: 40px;
+	background-color: #212531;
+	padding: 0 40px;
+}
+
+.header-small .logo,
+.header-small .header-in {
+	line-height: 30px;
+}
+
+.logo {
+	float: left;
+}
+.header-in {
+	float: right;
+}
+.logo-img,
+.logo-name {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.logo-img > img {
+	margin-top: 4px;
+}
+
+.logo-name {
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 20px;
+	color: #fff;
+	letter-spacing: 2px;
+}
+.header-in > p {
+	position: relative;
+	display: inline-block;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 14px;
+	color: #Fff;
+	vertical-align: middle;
+}
+
+.log {
+	position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 550px;
+}
+.log-in {
+    position: absolute;
+    left: 280px;
+    top: 50%;
+    margin-top: -120px;
+}
+.nam1 {
+	font-size: 25px;
+	color: #82cdf4;
+}
+.name2 {
+	font-size: 41px;
+	color: #f2fffd;
+}
+
+.log-con {
+	background:  #dddddd;
+	border-radius: 30px;
+    position: absolute;
+    right: 170px;
+    top: 50%;
+    margin-top: -200px;
+    width: 422px;
+    height: 422px;
+    background-image: url(../images/login-box.png);
+    background-size: 100%;
+}
+/* 登陆其他模块 */
+.log-other{
+	
+}
+/*手机短信登陆*/
+.log-tel{
+	color:red;
+	margin-left: 30px;
+    cursor:pointer;
+}
+
+.log-wrap {
+	height: 100%;
+	background-image: url(../images/bg-log.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.ver-code img {
+	width: 100%;
+	height: 40px;
+}
+.form-group {
+	padding: 75px 60px 10px;
+}
+
+
+.btn-wrap {
+	padding: 0 60px;
+}
+.form-group > div {
+	position: relative;
+	padding: 10px 0;
+}
+.remind {
+    float: left;
+    color: #A0A0A0;
+    cursor: pointer;
+}
+.remind >input{
+    margin-top: -2px;
+    margin-right: 3px;
+    cursor: pointer;
+}
+.remind >label{
+	cursor: pointer;
+}
+.live-pw {
+	float: right;
+	color: #5399EF;
+}
+.header {
+	position: absolute;
+	top: 0;
+}
+.header-log {
+	line-height: 40px;
+	color: #fff;
+	background-color: #7ba9e4;
+}
+/* .header-bg {
+	background-color: #3d4250;
+} */
+.logo-name {
+	color: #949ec1;
+}
+.p-code {
+	position: absolute;
+	font-size: 10px;
+	color: #D5452E
+}
+.btn-super {
+	margin: 0;
+}
+.form-input {
+	padding: 0 15px;
+    height: 40px;
+    color: #626c71;
+    background-color: #e5f1ff;
+    border: 1px solid #7db5ec;
+    border-radius: 5px;
+    box-shadow: 3px 0px 20px #b5c1ce inset;
+}
+.form-validation{
+	height: 30px;
+    color: #626c71;
+    background-color: #e5f1ff;
+    border: 1px solid #7db5ec;
+    border-radius: 5px;
+    box-shadow: 3px 0px 20px #b5c1ce inset;
+	
+}
+.btn-log {
+	height: 40px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	border-radius: 5px;
+	border: none;
+	color: #fff;
+	background-color: #4b7bea;
+	letter-spacing: 2px;
+}
+.btn-log:hover{
+	background-color: #6791f3;
+}
+.header-in {
+	float: none;
+	display: inline-block;
+	padding-left: 100px;
+}
+.col-md-wrap{
+	margin-left: -5px;
+    margin-right: -5px;
+}
+
+.wrapper{
+	padding-top: 0;
+}
+
+.btn {
+	display: inline-block;
+	min-width: 200px;
+	padding: 5px 10px;
+	margin: 45px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	background-image: none;
+	cursor: pointer;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.form-group > div {
+	width: 100%;
+	height: auto;
+	padding-top: 30px;
+	padding-bottom: 5px;
+}
+.form-input {
+	width: 100%;
+	height: 35px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: #cacaca 1px solid;
+	color: #A9A9A9;
+}
+
+/*账号*/
+.form-group-account {
+	display:block;
+}
+/*短信*/
+.form-SMS{
+	display:none;
+}
+
+.for-sms-ver{
+	float:left;
+	background:none; 
+	height: 30px;
+	  
+	
+}
+.form-Verification{
+	float:right;
+	line-height: 30px;
+	color:#4b7bea;
+	font-weight:bold;
+	cursor: pointer;
+}
+.for-digital{
+	float:left;
+	line-height: 30px;
+	font-weight:bold;
+	cursor: pointer;
+}
+/* 输入框 */
+.for-digital-inpt{
+	float:left;
+	background:none; 
+	height: 30px;
+	margin-left: 10px;
+}
+
+
+
+

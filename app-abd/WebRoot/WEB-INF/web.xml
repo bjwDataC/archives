@@ -110,13 +110,13 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 	
- 	 <!-- <filter>
+ 	 <filter>
 		<filter-name>SessionFilter</filter-name>
 		<filter-class>com.asiainfo.abdinfo.filter.SessionFilter</filter-class>
 		<init-param>
 			<description>将当前登录的用户的信息保存在 session 中时使用的key，如果没有配置此参数，则该过滤器不起作用</description>
 			<param-name>sessionKey</param-name>
-			<param-value>staffCode</param-value>
+			<param-value>userUser</param-value>
 		</init-param>
 		<init-param>
 			<param-name>redirectUrl</param-name>
@@ -137,7 +137,7 @@
 	<filter-mapping>
 		<filter-name>SessionFilter</filter-name>
 		<url-pattern>*.do</url-pattern>
-	</filter-mapping>    -->
+	</filter-mapping>   
 
 	<!-- Spring监听器 -->
 	<listener>

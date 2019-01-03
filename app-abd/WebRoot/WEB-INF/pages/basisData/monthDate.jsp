@@ -12,23 +12,23 @@
 <link href="${basePath}/css/lib/bootstrap.min.css" rel="stylesheet">
 <link href="${basePath}/css/lib/unix.css" rel="stylesheet">
 <link href="${basePath}/css/style.css" rel="stylesheet">
-<link href="${basePath}/css/myCss/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<link href="${basePath}/css/myCss/bootstrap-datetimepicker.min.css"
+	rel="stylesheet">
 <link href="${basePath}/css/myCss/loading.css" rel="stylesheet">
- <SCRIPT language=javascript>
-function closeDiv()
-{
-document.getElementById('loading').style.visibility='hidden';
-}
-function openDiv(){
-	document.getElementById('loading').style.visibility='visible';
-}
-</SCRIPT> 
+<SCRIPT language=javascript>
+	function closeDiv() {
+		document.getElementById('loading').style.visibility = 'hidden';
+	}
+	function openDiv() {
+		document.getElementById('loading').style.visibility = 'visible';
+	}
+</SCRIPT>
 
 </head>
 
 <body>
 
-    <%@ include file="../loading.jsp" %>
+	<%@ include file="../loading.jsp"%>
 
 	<%@ include file="../left.jsp"%>
 
@@ -87,6 +87,7 @@ function openDiv(){
 							</div>
 							<div class="card-body">
 								<div class="user-profile m-t-15">
+									
 									<div class="row">
 										<div class="col-lg-4">
 											<div class="user-photo m-b-30"></div>
@@ -98,9 +99,10 @@ function openDiv(){
 												<div class='col-sm-4'>
 													<div class="form-group">
 														<div class='input-group date' id='datetimepicker1'>
-															<input type='text' class="form-control"/>  <!-- placeholder="开始日期" --> 
-															<span class="input-group-addon">
-																<span class="glyphicon glyphicon-calendar"></span>
+															<input type='text' class="form-control" />
+															<!-- placeholder="开始日期" -->
+															<span class="input-group-addon"> <span
+																class="glyphicon glyphicon-calendar"></span>
 															</span>
 														</div>
 													</div>
@@ -108,9 +110,10 @@ function openDiv(){
 												<div class='col-sm-4'>
 													<div class="form-group">
 														<div class='input-group date' id='datetimepicker2'>
-															<input type='text' class="form-control" />  <!-- placeholder="结束日期" -->
-															<span class="input-group-addon">
-																<span class="glyphicon glyphicon-calendar"></span>
+															<input type='text' class="form-control" />
+															<!-- placeholder="结束日期" -->
+															<span class="input-group-addon"> <span
+																class="glyphicon glyphicon-calendar"></span>
 															</span>
 														</div>
 													</div>
@@ -128,47 +131,50 @@ function openDiv(){
 
 
 											<!-- 导航栏 -->
-											<div class="navigation" style="width: 70%; margin: 30px auto;">
-												<ul class="nav nav-pills nav-justified">
-													<li class='active'><a href="#" class='Info'>信息</a></li>
+										<div class="navigation" style="width: 70%; margin: 30px auto;">
+										 	<ul class="nav nav-pills nav-justified">
+													<!-- <li class='active'><a href="#" class='Info'>信息</a></li>
 													<li><a href="#" class='workLoad'>工作量</a></li>
-													<!-- <li><a href="#" class="signing">签约</a></li> -->
 													<li><a href="#" class="smallEx">小优</a></li>
-												</ul>
-											</div>
+													<li><a href="#" class='workLoad'>工作量</a></li>
+													<li><a href="#" class="smallEx">小优</a></li>
+													<li><a href="#" class='workLoad'>工作量</a></li>
+													<li><a href="#" class="smallEx">小优</a></li>
+													<li><a href="#" class="dropdown">工作量</a></li> -->
+											</ul> 
+										</div>
+										
+										
 
 
 											<div class="custom-tab user-profile-tab">
 												<ul class="nav nav-tabs" role="tablist">
-													
+
 												</ul>
 
 												<div id="mainDiv" style="margin: 20px auto; width: 900px;">
-														<!-- <div  id="main0" style="width: 900px;height:300px; "></div>
-														<div  id="main1" style="width: 900px;height:300px; "></div>
-													 	<div  id="main2" style="width: 900px;height:300px; "></div>
-														<div  id="main3" style="width: 900px;height:300px;"></div> -->
-											   </div>
-												
-											    </div>
+													   <div  id="main" style="width: 900px;height:300px; "></div>
+												</div>
+
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					
-   					<div>
-   					    <p>使用说明:初次展示(刷新页面)展示当前时间跟当前时间前60天的数据。</p>
-					    <p>若没有图像展示则数据库无数据,若数据有问题请联系数据中心进晓宇，王海成.</p>
+
+						<div>
+							<p>使用说明:初次展示(刷新页面)展示当前时间跟当前时间前60天的数据。</p>
+							<p>若没有图像展示则数据库无数据,若数据有问题请联系数据中心进晓宇，王海成.</p>
+						</div>
 					</div>
-					</div>
-					
+
 					<%@ include file="../bottom.jsp"%>
 				</section>
 			</div>
 		</div>
 	</div>
-	
+
 	<div id="search">
 		<button type="button" class="close">×</button>
 		<form>
@@ -190,11 +196,11 @@ function openDiv(){
 	<!-- bootstrap -->
 	<script src="${basePath}/js/bootstrap-datetimepicker.min.js"></script>
 	<script src="${basePath}/js/generateT.js"></script>
-	<script type="text/javascript" src="${basePath}/js/zh-CN.js"></script>     <!--  将英文变成汉字 -->
-    <script type="text/javascript" src="${basePath}/js/nowDate.js"></script>
-    <script type="text/javascript" src="${basePath}/js/datetimePicker.js"></script>
-	<script type="text/javascript" src="${basePath}/js/basisData.js"></script>
-
+	<script type="text/javascript" src="${basePath}/js/zh-CN.js"></script>
+	<!--  将英文变成汉字 -->
+	<script type="text/javascript" src="${basePath}/js/nowDate.js"></script>
+	<script type="text/javascript" src="${basePath}/js/datetimePickerMonth.js"></script>
+	<script type="text/javascript" src="${basePath}/js/basisDataMonth.js"></script>
 </body>
 </html>
 

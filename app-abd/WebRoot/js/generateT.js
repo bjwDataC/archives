@@ -25,13 +25,13 @@
         option.title.subtext="数据中心";
         option.tooltip.trigger='axis';
         option.legend.data=obj.data;
- /*       dataZoom= {
+       /* dataZoom= {
                 show: true,
                 realtime: true,
-                y: 36,
+                y: 28,      //36
                 height: 20,
-                start: 20,
-                end: 80
+                start: 10,   //20
+                end: 90
             };
         option.dataZoom=dataZoom;*/
         option.xAxis=[];
