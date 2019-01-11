@@ -7,9 +7,23 @@
 	</resultMap>
 	
 	
-    <!--里程碑事件 -->
+   <!-- 查询以前图片 -->
 	<select id="findIamge" parameterType="java.util.Map" resultMap="image">
 		select 人员编码,照片 from GSJCZDA.dbo.photograph where 人员编码=#{staffCode}
 	</select>
+	
+	<!-- 插入头像 -->
+	<insert id="insertPhone" parameterType="java.util.Map">
+	INSERT INTO Test_jxy.dbo.UPLOAD_TABLE (STAFF_CODE,TYPE,CREATE_DATE,PATH)
+    VALUES (#{staffCode},#{type},GETUTCDATE(),#{path});
+	</insert>
+	
+	<!-- 查询头像 -->
+	<select id="selectPhnoe" parameterType="String" resultType="String">
+	  select PATH from Test_jxy.dbo.UPLOAD_TABLE 
+	  WHERE STAFF_CODE=#{staffCode}
+	</select>
+	
+	
 
 </mapper>

@@ -1,13 +1,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.asiainfo.abdinfo.dao.IDayDataDao">
-	<!-- 日数据 ***小优 -->
-	<!-- <resultMap type="com.asiainfo.abdinfo.po.DayDate" id="dayDate"> <collection 
-		property="smallExcellent" ofType="com.asiainfo.abdinfo.po.SmallExcellent" 
-		column="smallDate"> </collection> </resultMap> -->
-
-
-
 
 	<!-- 信息 -->
 	<select id="selectInfo" parameterType="java.util.Map"
@@ -68,6 +61,35 @@
 	</select>
 
 
+   <!-- 日数据有效模块 -->
+   <select id="selecteFfective" parameterType="java.util.Map" resultType="com.asiainfo.abdinfo.po.Workload">
+	  SELECT aa.dateRefence as dateTime,
+	       ISNULL(bb.系统记录回访时, 0) sysVisit,
+	       ISNULL(bb.有效回访个数, 0)  visitNumber ,
+         ISNULL(cc.通话时长, 0) timeLength, 
+         ISNULL(dd.次数, 0) numCount
+	FROM (select CONVERT(date,DATEADD(D,number,#{beginData}),23) as dateRefence
+	  from [master].[dbo].[spt_values] where type='p') aa 
+	LEFT JOIN [LF].[dbo].[ReturnVisitStatistics] bb 
+	ON aa.dateRefence=bb.[计划结束时间] AND bb.咨询师人员编码=#{staffCode}
+  LEFT JOIN (SELECT  SUM(通话时长)[通话时长] ,CONVERT(date, 通话开始时间, 23)通话开始标准时间
+		FROM LY..TelephoneBillRetrieval 
+		where 人员编码=#{staffCode} and ISNULL(客户姓名,1) NOT LIKE '%员工' GROUP BY CONVERT(date, 通话开始时间, 23) )cc 
+ ON aa.dateRefence=通话开始标准时间 
+LEFT JOIN (
+  SELECT CONVERT(DATE, createdon_time, 23)[创建时间],chuangjianzhe_no [人员编码],count(1) 次数
+		FROM [DW].[dbo].[CSC_CustomerReception]
+		WHERE   leixing = '面谈' and fujianshifouhege = '是'  AND chuangjianzhe_no=#{staffCode}
+   GROUP BY CONVERT(DATE, createdon_time, 23),chuangjianzhe_no 
+) dd ON aa.dateRefence=dd.[创建时间]
+WHERE aa.dateRefence&lt;=#{endData}
+ORDER BY  aa.dateRefence
+   </select>
+   
+   
+   
+   
+   
    
 
 

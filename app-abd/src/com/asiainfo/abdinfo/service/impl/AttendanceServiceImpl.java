@@ -1,12 +1,14 @@
 package com.asiainfo.abdinfo.service.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.asiainfo.abdinfo.dao.AttendanceDao;
+import com.asiainfo.abdinfo.po.Administrative;
 import com.asiainfo.abdinfo.po.Person;
 import com.asiainfo.abdinfo.po.UserUser;
 import com.asiainfo.abdinfo.service.AttendanceService;
@@ -74,6 +76,26 @@ public class AttendanceServiceImpl implements AttendanceService{
 		map.put("staffPwd", pwd);
 		return attendanceDao.selectNamePwd(map);
 	}
+
+	
+	//获取考情
+	@Override
+	public List<String> getYear(String staffCode) {
+		return attendanceDao.selectYear(staffCode);
+	}
+  
+	
+   /**
+   * 用来展示行政数据
+   */
+	@Override
+	public List<Administrative> getAdm(String staffCode, String year) {
+		return attendanceDao.selectAdm(staffCode, year);
+	}
+
+   
+	
+	
 
 }
 

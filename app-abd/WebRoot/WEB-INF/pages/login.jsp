@@ -64,7 +64,7 @@
 					
 					<div class="log-other">
 					   <div class="log-tel" >
-					       <p>手机短信登陆</p>
+					    <!--    <p>手机短信登陆</p> -->
 					   </div>
 					</div>
 				</div>
@@ -83,6 +83,19 @@
 	    	$(".form-SMS").css("display","block");
 	    	
 	    });
+	</script>
+	
+	<script type="text/javascript">
+	 $(function(){
+		    document.onkeydown = function(e){  
+		      var ev = document.all ? window.event : e;
+		      if(ev.keyCode==13) {// 如（ev.ctrlKey && ev.keyCode==13）为ctrl+Center 触发
+		          $('.btn-click').click();
+		      }
+		    }
+		 });
+	
+	
 	</script>
 </body>
 

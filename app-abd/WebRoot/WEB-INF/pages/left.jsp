@@ -2,9 +2,6 @@
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<c:set var="basePath" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -52,12 +49,15 @@
                             <li onmouseover="changeColorLi(this)"><a href="${basePath}/app-event-calender.do">心灵家园</a></li>
                         </ul>
                     </li>
-                    <li class="li" onmouseover="changeColor(this)"><a><i class="ti-close"></i> Logout</a></li>
+
+                    <li><a><i class="ti-close"></i>退出</a></li>
+
                 </ul>
             </div>
         </div>
     </div>
     <script src="${basePath}/js/lib/jquery.min.js"></script>
+<<<<<<< HEAD
    <!--  <script type="text/javascript">
     $(function(){
     	//经营数据之月数据 
@@ -76,6 +76,21 @@
 			$(e).addClass("active")
 		}
 	</script>
+=======
+     <script type="text/javascript">
+   //点击退出按钮 
+     var chooseul=$(".nano-content li:last").click(function(){
+    	 window.location.href= 'loginUI.do';
+     });
+     console.log(chooseul);
+	</script> 
+>>>>>>> branch 'master' of https://github.com/bjwDataC/archives.git
 </body>
 </html>
+
+
+
+
+
+
 

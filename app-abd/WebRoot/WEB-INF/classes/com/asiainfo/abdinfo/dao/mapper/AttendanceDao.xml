@@ -16,6 +16,14 @@
 	    </collection>	
 	</resultMap>
 	
+	<select id="selectYear" parameterType="String" resultType="String">
+		   SELECT  
+	      distinct([年度]) 
+	      FROM [DW].[dbo].[KQ_jcsj]
+	      WHERE [人员编码]=#{staffCode} 
+	      ORDER BY [年度] DESC
+	</select>
+	
 	<!-- 考勤 -->
 	<select id="selectAttendance" parameterType="java.util.Map" resultMap="atPerson">
 	  SELECT  
@@ -27,7 +35,7 @@
       isnull([无薪假天数],0)  as leaveNum,
       isnull([最终加班],0)  as overtime
       FROM [DW].[dbo].[KQ_jcsj]
-      WHERE [人员编码]='15110204' AND 年度='2018'
+      WHERE [人员编码]=#{staffCode} AND 年度=#{year}
       order by 年度 desc,考勤期间 asc
 	</select>
 	
@@ -58,13 +66,17 @@
     left join HF.dbo.MobilePhoneNumberInformation c on S.人员编码=c.使用者人员编码 and c.类型 = '员工'
     left join DW.DBO.PI_Contact D ON S.人员编码 = D.人员编码
     left join HF.DBO.MobilePhoneNumberInformation E ON S.人员编码 = E.使用者人员编码
-    WHERE S.人员编码='15110204'
+    WHERE S.人员编码=#{staffCode}
 	</select>
 	
 	<!-- 行政 -->
-	<select id="selectAdm" parameterType="java.util.Map">
-	  SELECT 年,月,类别,分数,人员编码,姓名 FROM RCXZ.dbo.[KQzj]
-      where 人员编码='12072001'
+	<select id="selectAdm" resultType="com.asiainfo.abdinfo.po.Administrative">
+	  SELECT 年  AS year,
+	                      月  AS month,
+	                      类别  AS type,
+	                      分数  AS score
+	   FROM RCXZ.dbo.[KQzj]
+      where 人员编码=#{staffCode} AND 年=#{year}
 	</select>
 	
 	
