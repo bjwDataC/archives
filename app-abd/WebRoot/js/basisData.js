@@ -62,11 +62,11 @@
 	             data: {beginData:beginData, endData:endData},
 	             dataType: "json",
 	             success: function(data){
+	            	 console.log(data);
 	            	 closeDiv();
 	            	  var b={};
 	             	  var a=new Array();
 	             	  var divMain=document.getElementById('mainDiv');
-	             	  console.log(divMain);
 	            	 for(var i=0;i<data.allList.length;i++){
 	            		 a[i]=new Array();
 	            		 a[i].push(data.allList[i]);

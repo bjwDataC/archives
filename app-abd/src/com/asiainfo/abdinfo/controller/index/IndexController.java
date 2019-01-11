@@ -44,6 +44,13 @@ public class IndexController {
 	}
 	
 	
+	@RequestMapping(value="/test.do")
+	@ResponseBody
+	public ModelAndView test(HttpServletRequest request,HttpServletResponse response){
+		return new ModelAndView("/Test");
+	}
+	
+	
 
 }
 

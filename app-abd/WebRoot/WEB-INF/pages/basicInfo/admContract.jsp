@@ -43,7 +43,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- /# column -->
 				</div>
 				<!-- /# row -->
 				<section id="main-content">
@@ -51,15 +50,15 @@
 					<div class="col-lg-12">
 						<div class="card alert">
 							<div class="card-header">
-                             
-						
-							<div class="mySelect">
-								<!-- <select class="selectpicker">
+
+
+								<div class="mySelect">
+								<!-- 	 <select class="selectpicker">
 									<option value="1">2018</option>
 									<option value="2">2017</option>
 									<option value="3">2016</option>
-								</select> -->
-							</div>
+								</select>  -->
+								</div>
 
 
 
@@ -67,18 +66,6 @@
 									<ul>
 										<li class="card-close" data-dismiss="alert"><i
 											class="ti-close"></i></li>
-										<li class="card-option drop-menu"><i class="ti-settings"
-											data-toggle="dropdown" aria-haspopup="true"
-											aria-expanded="true" role="link"></i>
-											<ul class="card-option-dropdown dropdown-menu">
-												<li><a href="#"><i class="ti-loop"></i> Update data</a></li>
-												<li><a href="#"><i class="ti-menu-alt"></i> Detail
-														log</a></li>
-												<li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
-												<li><a href="#"><i class="ti-power-off"></i> Clear
-														ist</a></li>
-											</ul></li>
-										<li class="doc-link"><a href="#"><i class="ti-link"></i></a></li>
 									</ul>
 								</div>
 							</div>
@@ -90,29 +77,24 @@
 										</div>
 										<div class="col-lg-8" style="width: 100%;">
 											<div class="user-profile-name dib">个人信息</div>
-											<div class="useful-icon dib pull-right">
-												<span><a href=""><i class="ti-pencil-alt"></i></a> </span> <span><a
-													href=""><i class="ti-printer"></i></a></span> <span><a
-													href=""><i class="ti-download"></i></a></span> <span><a
-													href=""><i class="ti-share"></i></a></span>
-											</div>
+
 											<div class="custom-tab user-profile-tab">
 												<ul class="nav nav-tabs" role="tablist">
 													<li role="presentation" class="active"><a href="#1"
 														aria-controls="1" role="tab" data-toggle="tab"></a></li>
 												</ul>
 
-												<div style="margin-left: 70px; margin-top: 40px;">
-													<div class="tab-content" style="float: left;">
+												<div style="margin-top: 40px;">
+													<!-- <div class="tab-content" style="float: left;">
 														<div role="tabpanel" class="tab-pane active" id="1">
 															<div class="contact-information">
-																<div class="card-body" id="pieChart"
-																	style="width: 400px; height: 300px;"></div>
+																<div class="card-body" id="pieChart" style="width: 300px; height: 300px;"></div>
 															</div>
 														</div>
-													</div>
+													</div> -->
+
 													<div class="tab-content"
-														style="float: left; margin-left: 50px;">
+														style="float: left; margin-left: 10px;">
 														<div role="tabpanel" class="tab-pane active" id="1">
 															<div class="contact-information">
 																<div class="card-body" id="echChart"
@@ -121,6 +103,52 @@
 														</div>
 													</div>
 
+
+
+													<div class="col-lg-6"
+														style="float: left; width: 350px; margin-left: 80px;">
+														<div class="card alert">
+															<div class="card-header">
+																<h4>行政</h4>
+																<div class="card-header-right-icon">
+																	<ul>
+																		<li class="card-close" data-dismiss="alert"><i
+																			class="ti-close"></i></li>
+																	</ul>
+																</div>
+															</div>
+															<div class="card-body">
+																<div class="table-responsive">
+																	<table class="table">
+																		<thead>
+																			<tr>
+																				<th>月</th>
+																				<th>类型</th>
+																				<th>分数</th>
+																			</tr>
+																		</thead>
+																		<tbody>
+																			<tr>
+																				<th scope="row">1</th>
+																				<td><span class="badge badge-success">环境</span></td>
+																				<td class="color-failure">1</td>
+																			</tr>
+																			<tr>
+																				<th scope="row">2</th>
+																				<td><span class="badge badge-success">卫生</span></td>
+																				<td class="color-success">1</td>
+																			</tr>
+																			<tr>
+																				<th scope="row">3</th>
+																				<td><span class="badge badge-failure">联查</span></td>
+																				<td class="color-success">-1</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</div>
+															</div>
+														</div>
+													</div>
 												</div>
 
 											</div>
@@ -160,7 +188,6 @@
 	<script type="text/javascript" src="${basePath}/js/echarts.min.js"></script>
 	<script type="text/javascript" src="${basePath}/js/generateT.js"></script>
 	<script type="text/javascript" src="${basePath}/js/achievement.js"></script>
-	<script type="text/javascript" src="${basePath}/js/pieT.js"></script>
 	<script src="${basePath}/js/lib/jquery.nanoscroller.min.js"></script>
 	<!-- nano scroller -->
 	<script src="${basePath}/js/lib/menubar/sidebar.js"></script>
@@ -168,56 +195,7 @@
 	<!-- sidebar -->
 	<script src="${basePath}/js/lib/bootstrap.min.js"></script>
 	<!-- bootstrap -->
-
-	<script type="text/javascript">
-		var oParent1 = document.getElementById('pieChart');
-		var obj1 = {
-			text : '某站点用户访问来源',
-			data : [ {
-				value : -1,
-				name : '环境'
-			}, {
-				value : -1,
-				name : '卫生'
-			}, {
-				value : 1,
-				name : '联查'
-			} ]
-		};
-		echarts.init(oParent1).setOption(option(obj1));
-	</script>
-	<script type="text/javascript">
-	  var mySel = document.createElement("select");    //创建select
-	  mySel.id = "citySel";                            //为select添加id
-	  $(".mySelect").append(mySel);	  
-      var obj=document.getElementById("citySel"); 
-	  obj.add(new Option("2018","0")); 
-	  obj.add(new Option("2017","1"));
-	  
-	  
-	//  1：var options=$("#citySel option:selected");  //获取选中的option
-	  
-	//  2：options.val();   //拿到选中项的值，比如选中上海，获取的值为“sh”;
-	   
-	//  3：options.text();   //拿到选中项的文本,比如选中上海，获取的值为“上海”
-	  //获取选中的option
-	   
-	//  2：options.val();   //拿到选中项的值，比如选中上海，获取的值为“sh”;
-	   
-	//  3：options.text();   //拿到选中项的文本,比如选中上海，获取的值为“上海”
-
-	  	
-	</script>
-
-
-
-
-
-
-
-
-
-
+	
 
 
 </body>

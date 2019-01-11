@@ -5,6 +5,7 @@ import java.util.Map;
 import com.asiainfo.abdinfo.po.DayInfo;
 import com.asiainfo.abdinfo.po.MonthDate;
 import com.asiainfo.abdinfo.po.SmallExcellent;
+import com.asiainfo.abdinfo.po.Workload;
 
 public interface IDayDataDao {
 	
@@ -30,6 +31,14 @@ public interface IDayDataDao {
 	 * 月数据查询类型
 	 */
 	List<String> selectType(Map map);
+	
+	
+	/**
+	 * 日数据有效数据的查询
+	 * @param map
+	 * @return
+	 */
+	List<Workload> selecteFfective(Map map);
 }
 
 

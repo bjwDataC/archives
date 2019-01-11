@@ -10,6 +10,7 @@ import com.asiainfo.abdinfo.po.DayInfo;
 import com.asiainfo.abdinfo.po.MonthDate;
 import com.asiainfo.abdinfo.po.Person;
 import com.asiainfo.abdinfo.po.SmallExcellent;
+import com.asiainfo.abdinfo.po.Workload;
 
 public interface IBackGroundService {
 	Person getBackGround(Map map);
@@ -47,6 +48,13 @@ public interface IBackGroundService {
 	 * @return
 	 */
 	List<String> getType(Map map);
+	
+	/**
+	 * 月数据有效数据的查询
+	 * @param map
+	 * @return
+	 */
+	JSONObject getWorkload(Map map);
 }
 
 

@@ -39,7 +39,7 @@
     left join HF.dbo.MobilePhoneNumberInformation c on S.人员编码=c.使用者人员编码 and c.类型 = '员工'
     left join DW.DBO.PI_Contact D ON S.人员编码 = D.人员编码
     left join HF.DBO.MobilePhoneNumberInformation E ON S.人员编码 = E.使用者人员编码
-    WHERE S.人员编码='15110204'
+    WHERE S.人员编码=#{staffCode}
 	</select>
 	
 	<!-- 用来查询合同表 -->
