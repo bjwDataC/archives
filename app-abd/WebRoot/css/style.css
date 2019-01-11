@@ -307,7 +307,6 @@
   padding: 20px 0 8px;
   position: relative;
   min-height:400px;
-  max-height:750px;
   overflow-y:auto;
 }
 .timeline:before {
@@ -1843,7 +1842,6 @@ footer p {
   }
 }
 .recent-comment{
-	max-height:750px;
 	overflow-y:auto;
 }
 .recent-comment .media {

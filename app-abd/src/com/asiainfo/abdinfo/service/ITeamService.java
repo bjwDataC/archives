@@ -15,6 +15,6 @@ public interface ITeamService {
 	
 	public Map<String, Object> findSpecializedKnowledge(String staffCode,String date);//专业知识
 	
-	public Map<String, Object> fingReadingFeeling(String staffCode,String date);//查找读书心得
+	public Map<String, Object> fingReadingFeeling(String staffCode,String date,String chapter);//查找读书心得
 
 }

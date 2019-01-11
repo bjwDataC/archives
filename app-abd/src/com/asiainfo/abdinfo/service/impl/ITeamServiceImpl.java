@@ -29,7 +29,7 @@ public class ITeamServiceImpl implements ITeamService{
 	//公司公共课、读书心得和新员工入职培训
 	@Override
 	public Map<String, Object> findCompany(String staffCode,String date) {
-		date=date.substring(0,4);
+		//date=date.substring(0,4);
 		Map<String, Object> map=new HashMap<String,Object>();
 		List<CoachingRecord> companyList=teamDao.fingCompanyKnowledge(staffCode,date);
 		List<CoachingRecord> inductionTrainingList=teamDao.fingInductionTraining(staffCode);
@@ -55,11 +55,15 @@ public class ITeamServiceImpl implements ITeamService{
 	}
 	/**查找读书心得*/
 	@Override
-	public Map<String, Object> fingReadingFeeling(String staffCode,String date) {
-		date=date.substring(0,7);
+	public Map<String, Object> fingReadingFeeling(String staffCode,String date,String chapter) {
+		//date=date.substring(0,7);
+		if(chapter.equals("")){
+			chapter=teamDao.findBook().get(0);
+		}
 		Map<String, Object> map=new HashMap<String,Object>();
-		List<CoachingRecord> readingFeelingList=teamDao.fingReadingFeeling(staffCode,date);
+		List<CoachingRecord> readingFeelingList=teamDao.fingReadingFeeling(staffCode,date,chapter);
 		map.put("readingFeelingList", readingFeelingList);
+		map.put("bookName", teamDao.findBook());
 		return map;
 	}
 	

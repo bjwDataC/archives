@@ -57,21 +57,12 @@
 		"ti-unlink","ti-trash","ti-target","ti-tag","ti-desktop","ti-tablet","ti-mobile","ti-email","ti-star",
 		"ti-spray","ti-signal","ti-shopping-cart","ti-shopping-cart-full","ti-settings","ti-search",
 		"ti-zoom-in","ti-zoom-out","ti-cut","ti-ruler","ti-ruler-alt-2","ti-ruler-pencil","ti-ruler-alt",
-		"ti-bookmark","ti-bookmark-alt","ti-reload","ti-plus","ti-minus","ti-close","ti-pin","ti-pencil",
-		"ti-pencil-alt","ti-paint-roller","ti-paint-bucket","ti-na","ti-medall","ti-medall-alt","ti-marker",
-		"ti-marker-alt","ti-lock","ti-unlock","ti-location-arrow","ti-layout","ti-layers","ti-layers-alt",
-		"ti-key","ti-image","ti-heart","ti-heart-broken","ti-hand-stop","ti-hand-open","ti-hand-drag",
-		"ti-flag","ti-flag-alt","ti-flag-alt-2","ti-eye","ti-import","ti-export","ti-cup","ti-crown",
-		"ti-comments","ti-comment","ti-comment-alt","ti-thought","ti-clip","ti-check","ti-check-box",
-		"ti-camera","ti-announcement","ti-brush","ti-brush-alt","ti-palette","ti-briefcase","ti-bolt",
-		"ti-bolt-alt","ti-blackboard","ti-bag","ti-world","ti-wheelchair","ti-car","ti-truck","ti-timer",
-		"ti-ticket","ti-thumb-up","ti-thumb-down","ti-stats-up","ti-stats-down","ti-shine","ti-shift-right",
-		"ti-shift-left","ti-shift-right-alt","ti-shift-left-alt","ti-shield","ti-notepad","ti-server",
-		"ti-pulse","ti-printer","ti-power-off","ti-plug","ti-pie-chart","ti-panel","ti-package","ti-music",
-		"ti-music-alt","ti-mouse","ti-mouse-alt","ti-money","ti-microphone","ti-menu","ti-menu-alt","ti-map",
-		"ti-map-alt","ti-location-pin","ti-light-bulb","ti-info","ti-infinite","ti-id-badge","ti-hummer",
-		"ti-home","ti-help","ti-headphone","ti-harddrives","ti-harddrive","ti-gift","ti-game","ti-filter",
-		"ti-files","ti-file","ti-zip","ti-folder","ti-envelope","ti-dashboard","ti-cloud","ti-cloud-up",
-		"ti-cloud-down","ti-clipboard","ti-calendar","ti-book"]
-  
+		"ti-bookmark","ti-bookmark-alt","ti-reload","ti-plus","ti-minus","ti-close","ti-pin","ti-pencil"
+		]
+	//随机颜色
+  	var color=["#2100cc","#ce437a","#a07490","#59ff98","#a8de62","#32cf20","#407e89","#435b44","#1bced0",
+  		"#d3a69c","#fbb5af","#2477da","#2db793","#3df9bd","#65e75b","#6107b8","#e653c6","#df83d2","#61f177",
+  		"#e82a8d","#69ecb9","#13a3e3","#7a3df1","#5731fd","#f60bce","#5ffd26","#9ea159","#f9ef91","#1258cc",
+  		"#b30223","#659728","#65b7ed","#8f8659","#2b2d21","#f86189","#610a45","#4c90f6","#8f586b","#bb6f6c",
+  		"#be61a7","#45fd8d","#4f110f"]
   </script>

@@ -54,7 +54,7 @@
 									style="border-bottom: 2px solid #e7e7e7;">
 									<h4 style="font-size: 25px; letter-spacing: 15px;">月总结</h4>
 									<div class="card-header-right-icon">
-										<ul>
+										<ul hidden>
 											<li id="4" onclick="search(this)">
 												<button type="button" class="btn btn-default m-b-10"
 													style="height: 30px; line-height: 10px;">搜索</button>
@@ -146,11 +146,11 @@
 			}
 			$.ajax({
 						type : 'get', //传输类型
-						url : 'spiritualHome.do?staffCode=14071801&date='
-								+ time + '&stutas=' + stutas,
+						url : 'spiritualHome.do?date='+ time + '&stutas=' + stutas,
 						dataType : 'json', //返回数据形式为json
 						success : function(result) {
 							if (stutas == "1") {
+								console.log(daySummarize)
 								$(".card-header h4").html("日总结")
 								$("#month").hide();
 								$("#day").show();
@@ -170,28 +170,27 @@
 											+ Math.floor(
 													Math.random() * 0xffffff)
 													.toString(16);
-									var time = daySummarize[i].time.substring(
-											0, 19)
+									var time =""; 
+									if(daySummarize[i].time!=null){
+										time=daySummarize[i].time.substring(0, 19)
+									}
 									var li = "<li>"
 											+ "<div class='timeline-badge success'><i class='fa fa-check-circle-o'></i></div>"
 											+ "<div class='timeline-panel'>"
 											+ "<div class='timeline-heading'>"
-											+ "<h5 class='timeline-title'>"
+											+ "<h5 class='timeline-title'style='font-size:25px;'>"
 											+ daySummarize[i].content
 											+ "</h5>"
 											+ "</div>"
 											+ "<div class='timeline-body' style='float:left;'>"
-											+ "<p>"
+											+ "<p style='color:	#00BFFF;'>"
 											+ time
 											+ "</p>"
 											+ "</div>"
 											+ "<div class='comment-action' style='float:right;'>"
 											+ "<span class='m-l-10'>"
-											+ "<a href='#'><i class='ti-check color-success'></i></a>"
-											+ "<a href='#'><i class='ti-close color-danger'></i></a>"
-											+ "<a href='#'><i class='fa fa-reply color-primary'></i></a>"
 											+ "</span>"
-											+ "<div class='badge badge-success'>Approved</div>"
+											+ "<div class='badge badge-success'><a href='#'><i class='ti-arrow-left' style='color:white;'></i></a>时间</div>"
 											+ "</div>" + " </div>" + "</li>";
 									$(".timeline").append(li)
 								}
@@ -215,23 +214,20 @@
 											+ "<a href='#'><img class='media-object' src='${basePath}/images/avatar/1.jpg' alt='...'></a>"
 											+ "</div>"
 											+ "<div class='media-body'>"
-											+ "<h4 class='media-heading'>"
-											+ monthSummarize[i].type
+											+ "<h4 class='media-heading' style='font-size:23px;'>"
+											+ "<span style='font-size:25px;'>"+monthSummarize[i].type+"</span>"
 											+ "："
 											+ monthSummarize[i].content
 											+ "</h4>"
-											+ "<p>经理回复："
+											+ "<p style='font-size:22px;'><span style='font-size:22px;color:#F39C12;'>经理回复：</span>"
 											+ monthSummarize[i].managerReply
 											+ "</p>"
 											+ "<div class='comment-action'>"
-											+ "<div class='badge badge-success'>Approved</div>"
+											+ "<div class='badge badge-success'>时间<a href='#'><i class='ti-arrow-right' style='color:white;'></i></a></div>"
 											+ " <span class='m-l-10'>"
-											+ "<a href='#'><i class='ti-check color-success'></i></a>"
-											+ "<a href='#'><i class='ti-close color-danger'></i></a>"
-											+ "<a href='#'><i class='fa fa-reply color-primary'></i></a>"
 											+ "</span>"
 											+ "</div>"
-											+ "<p class='comment-date' style='padding-right:30px;'>"
+											+ "<p class='comment-date' style='background-color:#1DE9B6;border-radius:5px;padding:0 15px;color:white;'>"
 											+ monthSummarize[i].time + "</p>"
 											+ "</div>" + "</div>";
 									$(".recent-comment").append(li)
@@ -264,17 +260,17 @@
 											+ "<img src='assets/images/product_1/download.jpg' alt='' />"
 											+ "</div>"
 											+ "</td>"
-											+ "<td style='width:1150px;'>"
+											+ "<td style='width:1350px;'>"
 											+ "<div class='product-2-des'>"
 											+ "<div class='product_name'>"
-											+ "<h4><text style='color:green;font-size:20px;'>经理评价：</text>"
+											+ "<h4 style='font-size:23px;'><text style='color:green;'>经理评价：</text>"
 											+ managerEvaluation[i].content
 											+ "</h4>"
 											+ "</div>"
 											+ "<div class='product_des'>"
-											+ "<p><text style='color:green;font-size:20px;'>经理姓名：</text>"
+											+ "<p style='font-size:20px;'><text style='color:green;'>经理姓名：</text>"
 											+ managerEvaluation[i].staffCode
-											+ "<span style='display:inline-block;margin-left:700px;'>时间："
+											+ "<span style='display:block;float:right;'>时间："
 											+ managerEvaluation[i].time
 											+ "</span></p>"
 											+ "</div>"
@@ -313,12 +309,18 @@
 														+ year + "</a>")
 								year--;
 							}
-							var month=myDate.getMonth()+1
+							var month=myDate.getMonth()
 					    	if(month<10){
 					    		month="0"+month
 					    	}
+							
 					    	$("#months span").html(month);
-							$("#years span").html(myDate.getFullYear())
+					    	if(myDate.getMonth()==0){
+					    		$("#months span").html(12);
+					    		$("#years span").html(myDate.getFullYear()-1)
+					    	}else{
+								$("#years span").html(myDate.getFullYear())
+					    	}
 							search("");
 						});
 

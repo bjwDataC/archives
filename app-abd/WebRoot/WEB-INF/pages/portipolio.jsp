@@ -20,7 +20,10 @@
 
     
     <div class="content-wrap">
-    
+    	<%-- <img src="${basePath}/images/avatar/京瓷哲学.jpg" style="position:fixed;z-index:9999;width:30px;height:30px;left:770px;top:330px;"> --%>	
+    	<div id="video" hidden style="overflow:hidden;border:1px solid red;position:fixed;z-index:9998;left:500px;top:300px;">
+    	
+    	</div>
         <div class="main">
             <div class="container-fluid">
             
@@ -39,8 +42,8 @@
                                 
                                 <div class="card-header-right-icon" >
                                     <ul hidden>
-                                        <li id="4">
-                                        	<button type="button" class="btn btn-default m-b-10" style="height:30px;line-height:10px;" onclick="milestone(this)">搜索</button>
+                                        <li id="8">
+                                        	<button type="button" class="btn btn-default m-b-10" style="height:33px;line-height:10px;" onclick="milestone(this)">搜索</button>
                                         </li>
                                         <li id="months" style="border:1px solid #e7e7e7;z-index:9999 !Important;min-height:30px;min-width:98px;margin:0;padding:0;position:absolute;right:100px;overflow:hidden;" onmouseleave="monthlist()" onmouseover="listmonth()">
                                         	<span style="display:inline-block;padding-left:15px;margin-right:15px;"></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-angle-down" style="line-height:30px;"></i>
@@ -64,6 +67,10 @@
                                         	<div id="listyear" hidden>
                                      
                        						</div>
+                                        </li>
+                                        
+                                        <li id="li9">
+                                        	<button type="button" class="btn btn-default m-b-10" style="height:33px;line-height:10px;margin-right:220px;" onclick="milestone(this)">全部</button>
                                         </li>
                                         
                                     </ul>
@@ -100,43 +107,13 @@
 							                <div class="container">
 							                   <div class="row" style="margin-right:30px;">
 							                       <div class="col-md-6  left-grid">
-							                            <ul class="left-items">
-							                        		<li>
-							                        			<div style='border:5px solid #eef1f6;'>
-												            	<h3>incident+</h3>
-												            	<div style="font-family:楷体;font-size:18px;">inspiration</div>
-												            	<h4>time+</h4>
-												            	</div>
-												            	<span></span>
-												        	</li>
-												        	<li>
-												            	<div style='border:5px solid #eef1f6;'>
-												            	<h3>incident+</h3>
-												            	<div style="font-family:楷体;font-size:18px;">inspiration</div>
-												            	<h4>time+</h4>
-												            	</div>
-												            	<span></span>
-												        	</li>
+							                            <ul class="left-items col-md-12">
+							                        		
 							                    		</ul>
 							                       </div>
 							                       <div class="col-md-6">
-							                            <ul class="right-items" >
-							                            	<li>
-												            	<div style='border:5px solid #eef1f6;'>
-												            	<h3>incident+</h3>
-												            	<div style="font-family:楷体;font-size:18px;">inspiration</div>
-												            	<h4>time+</h4>
-												            	</div>
-												            	<span></span>
-												        	</li>
-												        	<li>
-												            	<div style='border:5px solid #eef1f6;'>
-												            	<h3>incident+</h3>
-												            	<div style="font-family:楷体;font-size:18px;">inspiration</div>
-												            	<h4>time+</h4>
-												            	</div>
-												            	<span></span>
-												        	</li>
+							                            <ul class="right-items col-md-12" >
+							                            	
 							                            	
 							                    		</ul>
 							                       </div>
@@ -196,11 +173,16 @@
     	
     	function milestone(e){
     		$("#milestone").show()
-    		$(".card-header-right-icon ul").show()
+    		//$(".card-header-right-icon ul").show()
     		$("#achievement").hide();
+    		$("#li9").hide();
     		var year=$("#years span").html();
     		var month=$("#months span").html();
     		var time=year+"-"+month
+    		var id=$(e).attr("id")
+    		/* if(id=="6"){
+    			time="";
+    		} */
     		//里程碑
     	    $.ajax({
     			  url: "education.do?staffCode=18060404&date="+time,
@@ -221,8 +203,15 @@
     	            	$(".null").hide()
     	            }
     	            var color=["#1de9b6","#03a9f5","#dd4b39","#f39c12"]
+    	            var leftRight="";
     	           	for(var i=0;i<list.length;i++){
+    	           		if(i%2==0){
+    	           			leftRight="left";
+    	               	}else{
+    	               		leftRight="right";
+    	               	};
     	          		s="<li>"+
+    	          			"<div style='float:"+leftRight+";padding:10px;font-size:20px;'><i class='ti-save-alt color-success' onclick='video(this)'></i></div>"+
     	          			"<div style='border:5px solid #eef1f6;background-color:	#F5F5F5'>"+
     		                   	"<h3>"+list[i].incident+"</h3>"
     		                   	+"<div style='font-family:楷体;font-size:18px;'>"+list[i].inspiration+"</div>"
@@ -272,7 +261,7 @@
 		    		    	option.yAxis[0].axisLabel.formatter='{value} 个';
 	    		    	}else if(type=="4"){
 	    		    		option.title.text="优质服务奖金 ";
-	    		    		option.yAxis[0].max=400;
+	    		    		option.yAxis[0].max=600;
 		    		    	option.yAxis[0].interval=50;
 		    		    	option.yAxis[0].axisLabel.formatter='{value} 元';
 	    		    	}else if(type=="1"){
@@ -289,7 +278,7 @@
 	    		    	}
 	    		    	else if(type=="3"){
 	    		    		option.title.text="优质服务积分 ";
-	    		    		option.yAxis[0].max=10;
+	    		    		option.yAxis[0].max=16;
 		    		    	option.yAxis[0].interval=2;
 		    		    	option.yAxis[0].axisLabel.formatter='{value} 分';
 	    		    	}
@@ -329,14 +318,22 @@
 	    	$("#months span").html(month);
 	    	$("#years span").html(myDate.getFullYear())
 	    });
-	    
+	    function video(){
+	    	$("#video").html("");
+	    	id=1;
+	    	if(id==1){
+	    		$("#video").show();
+	    	}
+	    	var videoDemo="<video src='https://www.datacenterlab.cn/audio/qiaobusi.mp4' controls autoplay height='300px' width='300px'></video>"
+	    	$("#video").append(videoDemo)
+	    }
     	/* function updateTime(){
     		var myDate = new Date();
 	    	$("#months span").html(myDate.getMonth()+1);
 	    	$("#years span").html(myDate.getFullYear())
     	} */
     	
-	    function getMonth(e){
+	    /* function getMonth(e){
 	    	$("#listmonth").hide();
 	    	$("#months span").html($(e).html());
 	    }
@@ -358,7 +355,7 @@
 	    }
 	    function yearlist(){
 	    	$("#listyear").hide();
-	    }
+	    } */
     </script>
     
 

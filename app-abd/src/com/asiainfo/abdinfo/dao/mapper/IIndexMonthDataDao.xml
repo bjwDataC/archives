@@ -19,7 +19,7 @@
 		(select 事业部 from PUBLICDATA.dbo.DS_STAFF where 人员编码=#{staffCode})) a ON h.sta_type=a.sta_type
 		where a.name_no=#{staffCode} and a.sta_type in ('到款金额','签约金额','有效数据','远程数据','信息转换率','电话邀约率','来访数据','签约率')
 	</select>
-	
+	<!-- 荣誉墙信息 -->
 	<select id="findHonor"  resultType="IndexMonthData">
 	
 		SELECT count(*) ranking,'小红花数量' as sta_type from [LRF].[dbo].[LRFlowers_new] where 人员编码=#{staffCode}

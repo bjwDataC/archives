@@ -19,7 +19,7 @@
                     <div class="col-lg-8 p-r-0 title-margin-right">
                         <div class="page-header">
                             <div class="page-title">
-                                <h1>Hello, <span>进晓宇</span></h1>
+                                <h1>Hello, <span>${sessionScope.userUser.staffName }</span></h1>
                             </div>
                         </div>
                     </div>
@@ -28,8 +28,8 @@
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="#">数据中心</a></li>
-                                    <li class="active">Home</li>
+                                    <li><a href="#">${sessionScope.userUser.division }</a></li>
+                                    <li class="active">${sessionScope.userUser.department }</li>
                                 </ol>
                             </div>
                         </div>
@@ -326,13 +326,13 @@
                                                 <div class="row">
                                                     <div class="col-lg-4 border-left">
                                                         <div class="stats-content">
-                                                            <div class="stats-digit">0</div>
+                                                            <img class="stats-digit" src="${basePath}/images/avatar/metal-gold-blue.png"/>
                                                             <div class="stats-text">奋斗者</div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 border-left">
                                                         <div class="stats-content">
-                                                            <div class="stats-digit">0</div>
+                                                            <img class="stats-digit" src="${basePath}/images/avatar/faves.png"/>
                                                             <div class="stats-text">杰出教育工作者</div>
                                                         </div>
                                                     </div>
@@ -401,7 +401,7 @@
     		//里程碑
 	        $.ajax({
 	           	type : 'get',  //传输类型
-	           	url : 'education.do?staffCode=11072201&date=2018-11',
+	           	url : 'education.do?date=',
 	           	dataType : 'json', //返回数据形式为json
 	           	success : function(result) {
 	               	console.log(result)
@@ -436,7 +436,7 @@
     		//辅导记录
     		$.ajax({
 	           	type : 'get',  //传输类型
-	           	url : 'coachingRecord.do?staffCode=11072201&date=2018-11',
+	           	url : 'coachingRecord.do?&date=',
 	           	dataType : 'json', //返回数据形式为json
 	           	success : function(result) {
 	           		console.log(result)
@@ -469,7 +469,7 @@
     		//多维度月数据部分内容
     		$.ajax({
 	           	type : 'get',  //传输类型
-	           	url : 'monthData.do?staffCode=17102707&date=2018-11-01',
+	           	url : 'monthData.do?date=2018-12-01',
 	           	dataType : 'json', //返回数据形式为json
 	           	success : function(result) {
 	               	console.log(result)
@@ -520,13 +520,25 @@
     		//荣誉墙
     		$.ajax({
 	           	type : 'get',  //传输类型
-	           	url : 'honor.do?staffCode=11072201',
+	           	url : 'honor.do',
 	           	dataType : 'json', //返回数据形式为json
 	           	success : function(result) {
-	               	console.log(result)
-	               	console.log("荣誉墙")
-	               	var classStr="border-bottom"
+	               	console.log(result);
+	               	console.log("荣誉墙");
+	               	var classStr="border-bottom";
+	               	var image="";
 	               	for(var i=0;i<result.length;i++){
+	               		if(i==0){
+	               			image="red_flower"
+	               		}else if(i==1){
+	               			image="christmas_2015-48"
+	               		}
+	               		else if(i==2){
+	               			image="badge"
+	               		}
+	               		else if(i==3){
+	               			image="thememanager"
+	               		}
 	               		if(i==0){
 	               			classStr=""
 	               		}else{
@@ -534,7 +546,7 @@
 	               		}
 	               		var div="<div class='col-lg-4 "+classStr+"'>"+
 			               		"<div class='stats-content'>"+
-			               		"<div class='stats-digit'>"+result[i].ranking+"</div><div class='stats-text'>"+result[i].sta_type+"</div>"+
+			               		"<img class='stats-digit' src='${basePath}/images/avatar/"+image+".png'/><div class='stats-text'>"+result[i].sta_type+"<span style='font-weight:bolder;color:red;'>("+result[i].ranking+"个)</span>"+"</div>"+
 			               		"</div>"+
 			               		"</div>";
 			            $(".media-stats-content .row").prepend(div);

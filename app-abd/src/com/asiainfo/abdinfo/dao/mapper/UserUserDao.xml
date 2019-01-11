@@ -3,19 +3,17 @@
 <mapper namespace="com.asiainfo.abdinfo.dao.AttendanceDao">
 
    <select id="selectNamePwd" parameterType="java.util.Map" resultType="com.asiainfo.abdinfo.po.UserUser">
-		 SELECT aa.[人员编码] staffCode,
+		 SELECT   aa.[人员编码] staffCode,
 		       aa.[姓名]  staffName,
 		       aa.[部门] department,
 		       aa.[事业部] division,
 		       aa.[岗位] jobs,
 		       aa.[登录密码] staffPwd,
-		       aa.[数据级别] Datalevel,
-		       bb.[手机号码] phoneNumber,
-		       bb.[微信号码] microNumber
+		       aa.[数据级别] Datalevel
 		from PUBLICDATA.dbo.DS_STAFF aa
-		LEFT JOIN Test_jxy.dbo.STAFF_USER bb ON aa.[人员编码]=bb.[人员编码]
 		WHERE aa.[人员编码]=#{staffCode} AND [登录密码]=#{staffPwd}
    </select>
+
 
 	
 

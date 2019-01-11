@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.asiainfo.abdinfo.common.JsonUtils;
 import com.asiainfo.abdinfo.common.ResponseUtils;
 import com.asiainfo.abdinfo.po.IndexMonthData;
+import com.asiainfo.abdinfo.po.UserUser;
 import com.asiainfo.abdinfo.service.IIndexMonthDataService;
 
 @Controller
@@ -26,10 +28,11 @@ public class IndexMonthDataController {
 	
 	@RequestMapping(value="/monthData.do")
 	@ResponseBody
-	public void findMonthData(HttpServletRequest request,HttpServletResponse response){
+	public void findMonthData(HttpServletRequest request,HttpServletResponse response,HttpSession session){
 		response.setContentType("application/json;charset=utf-8");
 		response.setCharacterEncoding("utf-8");
-		String staffCode=request.getParameter("staffCode");
+		UserUser userUser=(UserUser)session.getAttribute("userUser");
+		String staffCode = userUser.getStaffCode();
 		String datestr=request.getParameter("date");
 		String year=datestr.substring(0,4);
 		String month=datestr.substring(5,7);
@@ -59,8 +62,9 @@ public class IndexMonthDataController {
 	
 	@RequestMapping(value="/honor.do")
 	@ResponseBody
-	public void findHonor(HttpServletRequest request,HttpServletResponse response){
-		String staffCode=request.getParameter("staffCode");
+	public void findHonor(HttpSession session,HttpServletResponse response){
+		UserUser userUser=(UserUser)session.getAttribute("userUser");
+		String staffCode = userUser.getStaffCode();
 		List<IndexMonthData> list=iIndexMonthDataService.findHonor(staffCode);
 		ResponseUtils.renderJson(response, JsonUtils.toJson(list));
 	}

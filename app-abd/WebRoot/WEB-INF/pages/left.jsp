@@ -15,44 +15,44 @@
         <div class="nano">
             <div class="nano-content">
                 <ul>
-                    <li class="active"><a class="sidebar-sub-toggle"><i class="ti-home"></i> 首页 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li class="active li" onmouseover="changeColor(this)"><a class="sidebar-sub-toggle"><i class="ti-home"></i> 首页 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                       <ul>
-                            <li><a href="${basePath}/indexController.do">首页</a></li>
+                            <li onmouseover="changeColorLi(this)"><a href="${basePath}/indexController.do">首页</a></li>
                         </ul>
                     </li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-pencil-alt"></i>基本信息 <span class="badge badge-primary">2</span><span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li class="li" onmouseover="changeColor(this)"><a class="sidebar-sub-toggle"><i class="ti-pencil-alt"></i>基本信息 <span class="badge badge-primary">2</span><span class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
-                            <li><a href="${basePath}/backGroupIndex.do">背景|合同</a></li>
-                            <li><a href="${basePath}/admContract.do">行政|考勤</a></li>
+                            <li onmouseover="changeColorLi(this)"><a href="${basePath}/backGroupIndex.do">背景|合同</a></li>
+                            <li onmouseover="changeColorLi(this)"><a href="${basePath}/admContract.do">行政|考勤</a></li>
                         </ul>
                     </li>
 
-                    <li><a class="sidebar-sub-toggle"><i class="ti-cup"></i> 经营数据<span class="badge badge-primary">3</span> <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li class="li" onmouseover="changeColor(this)"><a class="sidebar-sub-toggle"><i class="ti-cup"></i> 经营数据<span class="badge badge-primary">3</span> <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
-                            <li><a href="${basePath}/baseData.do">日数据</a></li>       
-                            <li><a href="${basePath}/monthDate.do">月数据</a></li>
-                            <li><a href="#">阿米巴</a></li>
+                            <li onmouseover="changeColorLi(this)"><a href="${basePath}/baseData.do">日数据</a></li>       
+                            <li onmouseover="changeColorLi(this)"><a href="${basePath}/monthDate.do">月数据</a></li>
+                            <li onmouseover="changeColorLi(this)"><a href="#">阿米巴</a></li>
                         </ul>
                     </li>
 
-                    <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i>成长之路 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li class="li" onmouseover="changeColor(this)"><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i>成长之路 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
-                            <li><a href="${basePath}/companyKnowledge.do">知识图谱</a></li>
-                            <li><a href="${basePath}/coachingRecord-v.do">辅导记录</a></li>
-                            <li><a href="${basePath}/team.do">团队参与</a></li>
+                            <li onmouseover="changeColorLi(this)"><a href="${basePath}/companyKnowledge.do">知识图谱</a></li>
+                            <li onmouseover="changeColorLi(this)"><a href="${basePath}/coachingRecord-v.do">辅导记录</a></li>
+                            <li onmouseover="changeColorLi(this)"><a href="${basePath}/team.do">团队参与</a></li>
                         </ul>
                     </li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-layout"></i>荣誉成就<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li class="li" onmouseover="changeColor(this)"><a class="sidebar-sub-toggle"><i class="ti-layout"></i>荣誉成就<span class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
-                            <li><a href="${basePath}/portipolio.do">荣誉成就</a></li>
+                            <li onmouseover="changeColorLi(this)"><a href="${basePath}/portipolio.do">荣誉成就</a></li>
                         </ul>
                     </li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-heart"></i> 心灵家园 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <li class="li" onmouseover="changeColor(this)"><a class="sidebar-sub-toggle"><i class="ti-heart"></i> 心灵家园 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
-                            <li><a href="${basePath}/app-event-calender.do">心灵家园</a></li>
+                            <li onmouseover="changeColorLi(this)"><a href="${basePath}/app-event-calender.do">心灵家园</a></li>
                         </ul>
                     </li>
-                    <li><a><i class="ti-close"></i> Logout</a></li>
+                    <li class="li" onmouseover="changeColor(this)"><a><i class="ti-close"></i> Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -70,6 +70,12 @@
         });
     });
 	</script> -->
+	<script>
+		function changeColor(e){
+			$(".li").removeClass("active")
+			$(e).addClass("active")
+		}
+	</script>
 </body>
 </html>
 

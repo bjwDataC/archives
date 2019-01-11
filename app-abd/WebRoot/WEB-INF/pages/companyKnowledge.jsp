@@ -8,11 +8,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 <style>
-#listmonth a {
-	border-radius: 0;
-	border-left: 0;
-	border-right: 0;
-}
+	#listmonth a {
+		border-radius: 0;
+		border-left: 0;
+		border-right: 0;
+	}
+	#main-content1 span{
+		height: 0;position: absolute;top: 10px;left: -40px;
+	    border-top: 16px solid transparent;
+	    border-left: 32px solid #03a9f5;display: inherit;
+	    border-bottom: 16px solid transparent;
+	}
+	
 </style>
 <%@include file="incloudCSS.jsp"%>
 </head>
@@ -60,7 +67,7 @@
                                         	<i class="ti-angle-left"></i>
                                         </li> -->
 
-										<li id="4" onclick="clickButtom(this)">
+										<!-- <li id="4" onclick="clickButtom(this)">
 											<button type="button" class="btn btn-default m-b-10"
 												style="height: 30px; line-height: 10px;">搜索</button>
 										</li>
@@ -92,7 +99,7 @@
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-angle-down"
 											style="line-height: 30px;"></i>
 											<div id="listyear" hidden></div>
-										</li>
+										</li> -->
 									</ul>
 								</div>
 							</div>
@@ -127,13 +134,20 @@
 				<!-- 读书心得 -->
 				<section id="readingFeeling" hidden>
 				<div class="col-lg-12">
-					<div class="card alert">
-						<div class="card-header">
-							<h4 style="font-weight: 500; font-size: 25px;">读书心得</h4>
+					
+					<div class='col-lg-2'>
+						<%-- <div class='card alert'>
+							<img src="${basePath}/images/avatar/book1.jpg" style="width:200px;height:300px;"> 
 						</div>
-
+						<div class='card alert'>
+							<img src="${basePath}/images/avatar/book2.jpg" style="width:200px;height:300px;">
+						</div>
+						<div class='card alert'>
+							<img src="${basePath}/images/avatar/book3.jpg" style="width:200px;height:300px;">
+						</div> --%>
+						
 					</div>
-					<div id="main-content1"></div>
+					<div id="main-content1" class='col-lg-8' style="border-left:2px solid #CCCCCC;margin-left:255px;"></div>
 					<!-- /# card -->
 				</div>
 				</section>
@@ -230,183 +244,189 @@
 	<script>
 		function clickButtom(e) {
 			var stutas = $(e).attr("id");
+			var chapter="";
 			if (e == "") {
 				stutas = 1;
 			}
+			console.log($(e).attr("name"))
+			if($(e).attr("name")=="book"){
+				stutas =3;
+				chapter=$(e).next().html();
+				console.log(chapter)
+			}
+			/* 
+			//这段代码是有时间选择时的内容
 			if (stutas == "4") {
 				stutas = $("#stutas").html();
 			} else {
 				$("#stutas").html(stutas);
 			}
-			var date = $("#years span").html() + "-" + $("#months span").html()
-					+ "-01"
-			console.log(date)
-			var staffCode = "18060404"
-			$
-					.ajax({
-						type : 'get', //传输类型
-						url : 'companyData.do?staffCode=' + staffCode
-								+ '&stutas=' + stutas + '&date=' + date,
-						dataType : 'json', //返回数据形式为json
-						success : function(result) {
-							if (stutas == "1") {
-								$("#main-content").show();
-								$("#readingFeeling").hide();
-								$("#manage").hide();
-								$(".qualification").hide();
-								$("#main-content .table thead").html("");
-								$("#main-content .table tbody").html("");
-								$("#months").hide();
-								var score = "";
-								if (result.inductionTrainingList.length != 0) {
-									score = result.inductionTrainingList[0].staffCode
-								}
-								var thead = "<tr><th >序号</th><th style='width:200px;'>类别</th><th style='width:200px;'>级别</th><th style='width:450px;'>课程名称</th><th>成绩</th><th>日期</th></tr>"
-								$("#main-content .table thead").append(thead)
-
-								for (var i = 0; i < result.companyList.length; i++) {
-									var random = Math.floor(Math.random()
-											* (0 - 68 + 1) + 68);
-									var color = '#'
-											+ Math.floor(
-													Math.random() * 0xffffff)
-													.toString(16);
-									var tr = "<tr>"
-											+ "<th scope='row'>"
-											+ (i + 1)
-											+ "</th>"
-											+ "<td>"
-											+ result.companyList[i].type
-											+ "</td>"
-											+ "<td>"
-											+ result.companyList[i].content
-											+ "</td>"
-											+ "<td><span class='badge' style='background-color:"+color+";'>"
-											+ result.companyList[i].managerReply
-											+ "</span></td>"
-											+ "<td style='color:"+color+";'>"
-											+ result.companyList[i].staffCode
-											+ "</td>" + "<td>"
-											+ result.companyList[i].time
-											+ "</td>" + "</tr>";
-									$("#main-content .table tbody").append(tr);
-								}
-								$("#main-content .table tbody")
-										.append(
-												"<tr><th scope='row'>"
-														+ (result.companyList.length + 1)
-														+ "</th><td>新员工培训</td><td>公司级</td><td><span class='badge badge-primary'>新员工入职培训</span></td><td class='color-primary'>"
-														+ score
-														+ "</td><td></td></tr>")
-							} else if (stutas == "2") {
-								$("#months").show();
-								$("#main-content").hide();
-								$("#readingFeeling").hide();
-								$("#manage").show();
-								$(".qualification").show();
-								$("#manage .table tbody").html("");
-								console.log(result)
-								console.log("=========")
-								for (var i = 0; i < result.management.length; i++) {
-									var score = result.management[i].score
-											.substring(0,
-													result.management[i].score
-															.indexOf("."))
-									console.log(score)
-									var tr = "<tr>" + "<th scope='row'>"
-											+ (i + 1) + "</th>" + "<td>"
-											+ result.management[i].classGrade
-											+ "</td>" + "<td>"
-											+ result.management[i].periods
-											+ "</td>"
-											+ "<td><span class='badge'>"
-											+ score + "</span></td>" + "<td>"
-											+ result.management[i].ranking
-											+ "</td>" + "<td>"
-											+ result.management[i].year
-											+ "</td>" + "</tr>";
-									$("#manage .table tbody").append(tr)
-								}
-
-								for (var i = 0; i < result.qualification.length; i++) {
-									var tr = "<tr>"
-											+ "<th scope='row'>"
-											+ (i + 1)
-											+ "</th>"
-											+ "<td>"
-											+ result.qualification[i].nowPosition
-											+ "</td>"
-											+ "<td>"
-											+ result.qualification[i].aplayForPosition
-											+ "</td>"
-											+ "<td><span class='badge'>"
-											+ result.qualification[i].nowStartTime
-											+ "</span></td>"
-											+ "<td>"
-											+ result.qualification[i].aplayForStartTime
-											+ "</td>" + "<td>"
-											+ result.qualification[i].date
-											+ "</td>" + "</tr>";
-									$("#qualification  .table tbody")
-											.append(tr)
-								}
-							} else {
-								$("#months").show();
-								$("#main-content").hide();
-								$("#readingFeeling").show();
-								$("#manage").hide();
-								$(".qualification").hide();
-								$("#main-content1").html("");
-								//读书心得
-								for (var i = 0; i < result.readingFeelingList.length; i++) {
-									var div = "<div class='card alert'>"
-											+ "<div class='card-header'>"
-											+ "<h4 style='max-width:500px;'>章节："
-											+ result.readingFeelingList[i].managerReply
-											+ "</h4><h4 style='float:right;'> "
-											+ result.readingFeelingList[i].type
-											+ "</h4>"
-											+ "</div>"
-											+ "<div class='card-body'>"
-											+ "<div class='table-responsive'>"
-											+ result.readingFeelingList[i].content
-											+ "</div>"
-											+ "</div>"
-											+ "<div class='card-body' style='margin-top:15px;'>"
-											+ "<div class='table-responsive'>时间："
-											+ result.readingFeelingList[i].time
-											+ "</div>" + "</div>" + "</div>"
-									$("#main-content1").append(div);
-								}
-
-							}
-
+			var date = $("#years span").html() + "-" + $("#months span").html()+ "-01"
+			console.log(date) */
+			$.ajax({
+				type : 'get', //传输类型
+				url : 'companyData.do?stutas=' + stutas + '&date='+'&chapter='+chapter,
+				dataType : 'json', //返回数据形式为json
+				success : function(result) {
+					if (stutas == "1") {
+						$("#main-content").show();
+						$("#readingFeeling").hide();
+						$("#manage").hide();
+						$(".qualification").hide();
+						$("#main-content .table thead").html("");
+						$("#main-content .table tbody").html("");
+						$("#months").hide();
+						
+						var score = "";
+						console.log(result.companyList);
+						console.log("============================")
+						if (result.inductionTrainingList.length != 0) {
+							score = result.inductionTrainingList[0].staffCode
 						}
-					});
+						var thead = "<tr><th >序号</th><th style='width:200px;'>类别</th><th style='width:200px;'>级别</th><th style='width:450px;'>课程名称</th><th>成绩</th><th>日期</th></tr>"
+						$("#main-content .table thead").append(thead)
+						
+						for (var i = 0; i < result.companyList.length; i++) {
+							var random = Math.floor(Math.random()* (0 - 68 + 1) + 68);
+							var color = '#'+ Math.floor(Math.random() * 0xffffff).toString(16);
+							var tr = "<tr>"
+									+ "<th scope='row'>"
+									+ (i + 1)
+									+ "</th>"
+									+ "<td>"
+									+ result.companyList[i].type
+									+ "</td>"
+									+ "<td>"
+									+ result.companyList[i].content
+									+ "</td>"
+									+ "<td><span class='badge' style='background-color:"+color+";'>"
+									+ result.companyList[i].managerReply
+									+ "</span></td>"
+									+ "<td style='color:"+color+";'>"
+									+ result.companyList[i].staffCode
+									+ "</td>" + "<td>"
+									+ result.companyList[i].time
+									+ "</td>" + "</tr>";
+							$("#main-content .table tbody").append(tr);
+						}
+						$("#main-content .table tbody")
+								.append(
+										"<tr><th scope='row'>"
+												+ (result.companyList.length + 1)
+												+ "</th><td>新员工培训</td><td>公司级</td><td><span class='badge badge-primary'>新员工入职培训</span></td><td class='color-primary'>"
+												+ score
+												+ "</td><td></td></tr>")
+					} else if (stutas == "2") {
+						$("#months").show();
+						$("#main-content").hide();
+						$("#readingFeeling").hide();
+						$("#manage").show();
+						$(".qualification").show();
+						$("#manage .table tbody").html("");
+						$("#qualification .table tbody").html("")
+						console.log(result)
+						console.log("=========")
+						for (var i = 0; i < result.management.length; i++) {
+							var score = result.management[i].score.substring(0,result.management[i].score.indexOf("."))
+							console.log(score)
+							var tr = "<tr>" + "<th scope='row'>"
+									+ (i + 1) + "</th>" + "<td>"
+									+ result.management[i].classGrade
+									+ "</td>" + "<td>"
+									+ result.management[i].periods
+									+ "</td>"
+									+ "<td><span class='badge'>"
+									+ score + "</span></td>" + "<td>"
+									+ result.management[i].ranking
+									+ "</td>" + "<td>"
+									+ result.management[i].year
+									+ "</td>" + "</tr>";
+							$("#manage .table tbody").append(tr)
+						}
+
+						for (var i = 0; i < result.qualification.length; i++) {
+							if(result.qualification[i].nowStartTime==null){
+								result.qualification[i].nowStartTime="无数据";
+							}
+							var tr = "<tr>"
+									+ "<th scope='row'>"
+									+ (i + 1)
+									+ "</th>"
+									+ "<td>"
+									+ result.qualification[i].nowPosition
+									+ "</td>"
+									+ "<td>"
+									+ result.qualification[i].aplayForPosition
+									+ "</td>"
+									+ "<td><span class='badge'>"
+									+ result.qualification[i].nowStartTime
+									+ "</span></td>"
+									+ "<td>"
+									+ result.qualification[i].aplayForStartTime
+									+ "</td>" + "<td>"
+									+ result.qualification[i].date
+									+ "</td>" + "</tr>";
+							$("#qualification .table tbody").append(tr)
+						}
+					} else {
+						console.log(result)
+						$("#months").show();
+						$("#main-content").hide();
+						$("#readingFeeling").show();
+						$("#manage").hide();
+						$(".qualification").hide();
+						$("#main-content1").html("");
+						$(".col-lg-2").html("");
+						var image_color="";
+						for(var i=0;i<result.bookName.length;i++){
+							if(i==0){
+								image_color="image_color"
+							}else{
+								image_color=""
+							}
+							var div="<div class='card alert' name='book'>"+
+										"<img name='book' onclick='findBook(this)' src='${basePath}/images/avatar/"+result.bookName[i]+".jpg' style='width:217px;height:300px;'>"+
+										"<span hidden id='bookSpan'>"+result.bookName[i]+"</span>"+
+									"</div>"
+							$(".col-lg-2").append(div)
+						}
+						$(".col-lg-2 .card:first-child").css("backgroundColor","#D3D3D3")
+						//读书心得
+						for (var i = 0; i < result.readingFeelingList.length; i++) {
+							//if(result.readingFeelingList[i].type)
+							var div ="<div class='col-lg-12' style='width:180px;position:absolite;height:50px;left:-220px;top:50px;background-color:white;padding:0 0 0 5px;line-height:50px;overflow:hidden;white-space: nowrap;text-overflow: ellipsis;'>"
+									+result.readingFeelingList[i].managerReply+"</div>"+
+									"<div class='col-lg-12' style='background-color:white;margin-left:20px;'>"+
+									"<div style='height:50px;line-height:50px;'>"+result.readingFeelingList[i].time+"</div><div style='padding:0 0 20px 0;'>"+result.readingFeelingList[i].content+"</div>"+
+									"<span></span>"+
+									"</div>"
+							$("#main-content1").append(div);
+						}
+						
+					}
+
+				}
+			});
 		}
 
-		$(document)
-				.ready(
-						function() {
-							var myDate = new Date();
-							var year = myDate.getFullYear();
-							for (var i = 0; i < 10; i++) {
-								$("#listyear")
-										.append(
-												"<a href='#' style='border-radius:0;border-left:0;border-right:0;' class='list-group-item' onclick='getYear(this)'>"
-														+ year + "</a>")
-								year--;
-							}
-							var month = myDate.getMonth() + 1
-							if (month < 10) {
-								month = "0" + month
-							}
-							$("#months span").html(month);
-							$("#years span").html(myDate.getFullYear())
-							clickButtom("")
-						});
-
-		function getMonth(e) {
+		$(document).ready(function() {
+				//对于时间的操作
+				/* var myDate = new Date();
+				var year = myDate.getFullYear();
+				for (var i = 0; i < 10; i++) {
+					$("#listyear").append("<a href='#' style='border-radius:0;border-left:0;border-right:0;' class='list-group-item' onclick='getYear(this)'>"+ year + "</a>")
+					year--;
+				}
+				var month = myDate.getMonth() + 1
+				if (month < 10) {
+					month = "0" + month
+				}
+				$("#months span").html(month);
+				$("#years span").html(myDate.getFullYear()) */
+				clickButtom("")
+			});
+		//以下是对于有时间时的操作
+		/* function getMonth(e) {
 			$("#listmonth").hide();
 			$("#months span").html($(e).html());
 		}
@@ -428,6 +448,36 @@
 		}
 		function yearlist() {
 			$("#listyear").hide();
+		} */
+		
+		
+		function findBook(e){
+			var chapter=$(e).next().html();
+			$(e).parent().css("backgroundColor","#D3D3D3");
+			$(e).parent().siblings().css("backgroundColor","");
+			$.ajax({
+				type : 'get', //传输类型
+				url : 'companyData.do?stutas=3' + '&date='+'&chapter='+chapter,
+				dataType : 'json', //返回数据形式为json
+				success : function(result) {
+					$("#main-content").hide();
+					$("#readingFeeling").show();
+					$("#manage").hide();
+					$(".qualification").hide();
+					$("#main-content1").html("");
+					for (var i = 0; i < result.readingFeelingList.length; i++) {
+						//if(result.readingFeelingList[i].type)
+						var div ="<div class='col-lg-12' style='width:180px;position:absolite;height:50px;left:-220px;top:50px;background-color:white;padding:0 0 0 5px;line-height:50px;overflow:hidden;white-space: nowrap;text-overflow: ellipsis;'>"
+								+result.readingFeelingList[i].managerReply+"</div>"+
+								"<div class='col-lg-12' style='background-color:white;margin-left:20px;'>"+
+								"<div style='height:50px;line-height:50px;'>"+result.readingFeelingList[i].time+"</div><div style='padding:0 0 20px 0;'>"+result.readingFeelingList[i].content+"</div>"+
+								"<span></span>"+
+								"</div>"
+						$("#main-content1").append(div);
+					}
+					
+				}
+			});
 		}
 	</script>
 

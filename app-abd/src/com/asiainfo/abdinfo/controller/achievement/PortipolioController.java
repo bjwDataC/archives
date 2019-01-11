@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSONArray;
+import com.asiainfo.abdinfo.po.UserUser;
 import com.asiainfo.abdinfo.service.IPortipolioService;
 
 /** 荣誉成就小红花等信息的控制器的控制器 */
@@ -21,11 +22,11 @@ public class PortipolioController {
 	private IPortipolioService portipolioService;
 
 	@RequestMapping(value = "/portipolio.do")
-	public ModelAndView index(HttpServletRequest request) {
-
-		String staffCode = request.getParameter("staffCode");
-		Map map = new HashMap();
-		map.put("staffCode", "18060404");
+	public ModelAndView index(HttpServletRequest request,HttpSession session) {
+		UserUser userUser=(UserUser)session.getAttribute("userUser");
+		String staffCode = userUser.getStaffCode();
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("staffCode", staffCode);
 		JSONArray years = portipolioService.findYear(map);
 		JSONArray redFlower = portipolioService.findRedFlower(map);
 		map.put("years", years);
@@ -35,13 +36,14 @@ public class PortipolioController {
 
 	@RequestMapping(value = "/portipolioJson.do")
 	@ResponseBody
-	public Map portipolio(HttpServletRequest request) {
+	public Map<String,Object> portipolio(HttpServletRequest request,HttpSession session) {
 
-		String staffCode = request.getParameter("staffCode");
+		UserUser userUser=(UserUser)session.getAttribute("userUser");
+		String staffCode = userUser.getStaffCode();
 		String leiXing = request.getParameter("type");
-		Map map = new HashMap();
+		Map<String,Object> map = new HashMap<String,Object>();
 		JSONArray portipolio = new JSONArray();
-		map.put("staffCode", "18060404");
+		map.put("staffCode", staffCode);
 		JSONArray years = portipolioService.findYear(map);
 		if (leiXing.equals("0")) {
 			portipolio = portipolioService.findRedFlower(map);

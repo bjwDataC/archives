@@ -15,9 +15,11 @@ public interface ITeamDao {
 	
 	List<CoachingRecord> fingInductionTraining(@Param("staffCode")String staffCode);//新员工培训
 
-	List<CoachingRecord> fingReadingFeeling(@Param("staffCode")String staffCode,@Param("date")String date);//读书心得
+	List<CoachingRecord> fingReadingFeeling(@Param("staffCode")String staffCode,@Param("date")String date,@Param("chapter")String chapter);//读书心得
 	
 	List<Management> fingManagementReservePool(@Param("staffCode")String staffCode);//查找管理干部储备池成绩
 	
 	List<Qualification> findQualification(@Param("staffCode")String staffCode);// 查找任职资格答辩
+	
+	List<String> findBook();//查找书名
 }
