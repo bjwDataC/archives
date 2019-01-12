@@ -55,6 +55,7 @@
             </div>
         </div>
     </div>
+
     <script src="${basePath}/js/lib/jquery.min.js"></script>
    <!--  <script type="text/javascript">
     $(function(){

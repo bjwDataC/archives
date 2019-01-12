@@ -22,9 +22,7 @@
 						}
 						year=data[0];
 						attendDate(year);
-						console.log("_)_)__");
 						adm(year);
-						console.log("_)_)__");
 						
 					}
 				}
@@ -60,6 +58,20 @@
 				         dataType: "json",
 				         success: function(data){
 				        	 console.log(data);
+				        	if(data.length>0){
+				        		for(var i=0;i<data.length;i++){
+				        			var tr="";
+						        	 tr="<tr>"+
+											"<th scope='row'>"+data[i].month+"</th>"+
+											"<td><span class='badge badge-success'>"+data[i].type+"</span></td>"+
+											"<td class='color-failure'>"+data[i].score+"</td>"+
+											"</tr>";
+						        	 $('#adm').append(tr);
+				        			
+				        		}
+				        		
+				        	}
+                            
 				                  }
 				     });
 				 }

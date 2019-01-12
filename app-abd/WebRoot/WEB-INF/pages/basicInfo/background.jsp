@@ -102,7 +102,15 @@
 																		<img src="${companyInfo.image}" alt="" />
 																	</div>
 																	<div class="fileinput-preview fileinput-exists thumbnail" style="width: 200px; height: 150px;"></div>
-																	<div>
+																	
+																	<!-- 外层div 进度条的整体视觉和位置设置 -->
+																	 <div style="width:200px;height: 10px;border: 1px solid #CCC">
+                                                                        <!-- 内层div  逐渐递增的进度条 -->
+                                                                        <div id="jdt" style="height: 8px"></div>
+                                                                     </div>
+																	
+																	
+																	<!-- <div>
 																		<form action="upload.do" method="post" enctype="multipart/form-data">
 																			<span class="btn default btn-file">   
 																			<span class="fileinput-new" style=" cursor: pointer;">选择图片</span> 
@@ -112,7 +120,20 @@
 																			<a href="#" class="btn default fileinput-exists" data-dismiss="fileinput">移除</a> 
 																			<input class="fileinput-exists" type="submit" id='for-subimt' value='上传'>
 																		</form>
+																	</div> -->
+																	<!-- 新弄 -->
+																	<div>
+																		<form action=""  enctype="multipart/form-data" id="mainForm">
+																			<span class="btn default btn-file">   
+																			<span class="fileinput-new" style=" cursor: pointer;">选择图片</span> 
+																			<span class="fileinput-exists">更改</span> 
+																			<input  type="file" name="file" />
+																			</span> 
+																			<a href="#" class="btn default fileinput-exists" data-dismiss="fileinput">移除</a> 
+																			<input class="fileinput-exists" type="button" id='for-subimt' value='上传'>
+																		</form>
 																	</div>
+																	
 																</div>
 																<div id="titleImageError" style="color: #a94442"></div>
 															</div>
@@ -169,13 +190,53 @@
 	<!-- bootstrap -->
 	<!-- 基本信息 -->
 	<script type="text/javascript" src="${basePath}/js/backgroundInfo.js"></script>
-	
-	<!-- <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
- <script type="text/javascript" src="${basePath}/js/lib/jquery-ui/jquery-ui.min.js"></script>
- <script src="${basePath}/js/bootstrap-fileinput.js"></script>
- <script type="text/javascript" src="${basePath}/js/jxy/jquery.fileupload.js"></script> 
+	<script type="text/javascript" src="${basePath}/js/lib/jquery-ui/jquery-ui.min.js"></script>
+	<script src="${basePath}/js/bootstrap-fileinput.js"></script>
+	<script type="text/javascript" src="${basePath}/js/jxy/jquery.fileupload.js"></script> 
  
+ <!-- 点击提交按钮 -->
+ <script type="text/javascript">
+  $('#for-subimt').click(function(){
+	// 获取表单对象
+	  var fm = document.getElementById("mainForm");
+	// 实例化FormData对象
+	 var fd=new FormData(fm);
+	 // 创建XMLHttpRequest对象
+     var xhr = new XMLHttpRequest();
+     // 调用open方法准备ajax请求
+     xhr.open('post','upload.do');
+     var jdt = document.getElementById('jdt');
+     // 绑定onprogress事件
+     xhr.upload.onprogress = function(evt){
+         // console.log(evt);
+         // toFixed修正结果，只保留小数点后两位
+         // 计算上传大小的百分比
+         percent = (evt.loaded / evt.total).toFixed(2);
+         // 设置进度条样式
+         jdt.style.width = percent * 200 + 'px';
+         jdt.style.background = 'skyblue';
+     }
+
+     xhr.onreadystatechange = function(){
+         if(xhr.readyState == 4){
+            // alert(xhr.responseText);
+            //console.log(xhr.responseText);
+        	 window.location.href= 'backGroupIndex.do';
+         }
+     }
+     // 发送ajax请求
+     xhr.send(fd);
+ 
+	
+  });
+ 
+ </script>
+ 
+ 
+ 
+ 
+ 
+ <!-- 图片的展示 -->
  <script type="text/javascript">
 	         $.ajax({
 	             type: "GET",
