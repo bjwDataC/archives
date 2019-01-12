@@ -127,8 +127,8 @@
 																				<th>分数</th>
 																			</tr>
 																		</thead>
-																		<tbody>
-																			<tr>
+																		<tbody id="adm">
+																		<!-- 	<tr>
 																				<th scope="row">1</th>
 																				<td><span class="badge badge-success">环境</span></td>
 																				<td class="color-failure">1</td>
@@ -142,7 +142,7 @@
 																				<th scope="row">3</th>
 																				<td><span class="badge badge-failure">联查</span></td>
 																				<td class="color-success">-1</td>
-																			</tr>
+																			</tr> -->
 																		</tbody>
 																	</table>
 																</div>

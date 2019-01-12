@@ -57,7 +57,7 @@
         </div>
     </div>
     <script src="${basePath}/js/lib/jquery.min.js"></script>
-<<<<<<< HEAD
+
    <!--  <script type="text/javascript">
     $(function(){
     	//经营数据之月数据 
@@ -76,7 +76,7 @@
 			$(e).addClass("active")
 		}
 	</script>
-=======
+
      <script type="text/javascript">
    //点击退出按钮 
      var chooseul=$(".nano-content li:last").click(function(){
@@ -84,7 +84,7 @@
      });
      console.log(chooseul);
 	</script> 
->>>>>>> branch 'master' of https://github.com/bjwDataC/archives.git
+
 </body>
 </html>
 

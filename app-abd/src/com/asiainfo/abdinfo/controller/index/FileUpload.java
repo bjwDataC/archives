@@ -81,7 +81,8 @@ public class FileUpload {
     	}
     	//return "上传成功"; 
     	 System.out.println("上传成功");
-    	response.sendRedirect("backGroupIndex.do");
+    	//response.sendRedirect("backGroupIndex.do");
+    	// request.getRequestDispatcher("backGroupIndex.do").forward(request, response);//转法
     }
     
     
