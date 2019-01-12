@@ -45,7 +45,7 @@
                     </li>
                     <li><a class="sidebar-sub-toggle"><i class="ti-heart"></i> 心灵家园 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
-                            <li><a href="${basePath}/app-event-calender.do">心灵家园</a></li>
+                            <li><a href="${basePath}/spiritualHome.do">心灵家园</a></li>
                         </ul>
                     </li>
                     

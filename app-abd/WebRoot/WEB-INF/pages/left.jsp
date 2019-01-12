@@ -46,18 +46,16 @@
                     </li>
                     <li class="li" onmouseover="changeColor(this)"><a class="sidebar-sub-toggle"><i class="ti-heart"></i> 心灵家园 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
-                            <li onmouseover="changeColorLi(this)"><a href="${basePath}/app-event-calender.do">心灵家园</a></li>
+                            <li onmouseover="changeColorLi(this)"><a href="${basePath}/spiritualHome_v.do">心灵家园</a></li>
                         </ul>
                     </li>
 
                     <li><a><i class="ti-close"></i>退出</a></li>
-
                 </ul>
             </div>
         </div>
     </div>
     <script src="${basePath}/js/lib/jquery.min.js"></script>
-<<<<<<< HEAD
    <!--  <script type="text/javascript">
     $(function(){
     	//经营数据之月数据 
@@ -76,15 +74,15 @@
 			$(e).addClass("active")
 		}
 	</script>
-=======
+
      <script type="text/javascript">
-   //点击退出按钮 
+   	//点击退出按钮 
      var chooseul=$(".nano-content li:last").click(function(){
     	 window.location.href= 'loginUI.do';
      });
      console.log(chooseul);
 	</script> 
->>>>>>> branch 'master' of https://github.com/bjwDataC/archives.git
+
 </body>
 </html>
 

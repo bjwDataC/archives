@@ -18,9 +18,9 @@ import com.asiainfo.abdinfo.service.ISpiritualHomeService;
 @Controller
 public class SpiritualHomeController {
 	
-	@RequestMapping(value="/app-event-calender.do")
+	@RequestMapping(value="/spiritualHome_v.do")
 	public ModelAndView service(){
-		return new ModelAndView("restaurant-menu-one");
+		return new ModelAndView("spiritualHome");
 	}
 	
 	@Resource

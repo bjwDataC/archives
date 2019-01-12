@@ -1,23 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8" %>
-    <%-- <script src="${basePath}/js/lib/jquery.min.js"></script>
-    <script src="${basePath}/js/lib/jquery.nanoscroller.min.js"></script>
-    <!-- nano scroller -->
-    <script src="${basePath}/js/lib/menubar/sidebar.js"></script>
-    <script src="${basePath}/js/lib/preloader/pace.min.js"></script>
-    <!-- sidebar -->
-    <script src="${basePath}/js/lib/bootstrap.min.js"></script>
-    <!-- bootstrap -->
-    <script src="${basePath}/js/lib/mmc-common.js"></script>
-    <script src="${basePath}/js/lib/mmc-chat.js"></script>
-    <script src="${basePath}/js/lib/nestable/jquery.nestable.js"></script>
-    <!-- scripit init-->
-    <script src="${basePath}/js/lib/nestable/nestable.init.js"></script>
-    <!-- scripit init-->
-    <script src="${basePath}/js/scripts.js"></script>
-    <!-- scripit init--> --%>
-    
-    
-    
     <script src="${basePath}/js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="${basePath}/js/echarts.min.js"></script>
     <script type="text/javascript" src="${basePath}/js/generateT.js"></script>
@@ -34,7 +15,6 @@
     <script src="${basePath}/js/lib/weather/weather-init.js"></script>
     <script src="${basePath}/js/lib/circle-progress/circle-progress.min.js"></script>
     <script src="${basePath}/js/lib/circle-progress/circle-progress-init.js"></script>
-  <%--   <script src="${basePath}/js/lib/chartist/chartist.min.js"></script>
     <script src="${basePath}/js/lib/chartist/chartist-init.js"></script> --%>
     <script src="${basePath}/js/lib/sparklinechart/jquery.sparkline.min.js"></script>
     <script src="${basePath}/js/lib/sparklinechart/sparkline.init.js"></script>
